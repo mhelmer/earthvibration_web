@@ -1,0 +1,9 @@
+
+{% extends "base.html" %}
+
+{% block nav-polls %}<strong class="nav-active">Polls</strong>{% endblock %}
+
+{% block content %}
+	{% load poll_extras %}
+	{% show_latest_polls %}
+{% endblock %}
