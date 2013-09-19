@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block nav-events %}<strong class="nav-active">Events</strong>{% endblock %}
+
+{% block content %}
+<h2>Upcoming events:</h2>
+
+<h2>Historical events:</h2>
+
+{% load poll_extras %}
+{% show_latest_polls %}
+
+{% endblock %}

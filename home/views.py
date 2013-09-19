@@ -24,5 +24,9 @@ class MediaView(TemplateView):
     template_name = "home/media.html"
 
 
+class EventsView(TemplateView):
+    template_name = "home/events.html"
+
+
 class ContactView(TemplateView):
     template_name = "home/contact.html"
