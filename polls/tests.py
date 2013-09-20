@@ -2,7 +2,7 @@ import datetime
 
 from django.utils import timezone
 from django.test import TestCase
-from django.core import reverse
+from django.core.urlresolvers  import reverse
 
 from polls.models import Poll
 
