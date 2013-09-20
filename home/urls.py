@@ -8,6 +8,5 @@ urlpatterns = patterns('',
     url(r'^studio/', views.StudioView.as_view(), name="studio"),
     url(r'^releases/', views.ReleasesView.as_view(), name="releases"),
     url(r'^media/', views.MediaView.as_view(), name="media"),
-    url(r'^events/', views.EventsView.as_view(), name="events"),
     url(r'^contact/', views.ContactView.as_view(), name="contact"),
 )
