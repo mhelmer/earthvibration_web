@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load event_extras %}
+
+{% block nav-events %}<strong class="nav-active">Events</strong>{% endblock %}
+{% block content %}
+<h2>Upcoming events</h2>
+{% list_future_events %}
+<h2>Past events</h2>
+{% list_past_events %}
+{% endblock %}

@@ -1,8 +1,11 @@
-from django.http import HttpResponse
-from django.views.generic import View
+from django.views import generic
+from models import Event
 
 
-class IndexView(View):
+class IndexView(generic.TemplateView):
+    template_name = 'events/index.html'
 
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Empty events view')
+
+class DetailView(generic.DetailView):
+    model = Event
+    template_name = 'events/detail.html'
