@@ -1,0 +1,5 @@
+Django==1.5.4
+MySQL-python==1.2.4
+ezodf==0.2.5
+odfpy==0.9.6
+wsgiref==0.1.2
