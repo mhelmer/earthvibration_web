@@ -1,25 +1,21 @@
 from django import template
 from django.utils import timezone
 
-from events.models import Event
-
 register = template.Library()
 
 
-def list_past_events():
-    events = Event.objects.filter(
+def list_past_events(events):
+    past_events = events.filter(
         date__lte=timezone.now(),
-        published = True
     ).order_by('date')
-    return {'events': events, 'kind': 'past'}
+    return {'events': past_events, 'kind': 'past'}
 
 
-def list_future_events():
-    events = Event.objects.filter(
+def list_future_events(events):
+    future_events = events.filter(
         date__gte=timezone.now(),
-        published = True
     ).order_by('date')
-    return {'events': events, 'kind': 'upcoming'}
+    return {'events': future_events, 'kind': 'upcoming'}
 
 register.inclusion_tag('events/list_events.html')(list_past_events)
 register.inclusion_tag('events/list_events.html')(list_future_events)
