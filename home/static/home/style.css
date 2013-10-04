@@ -1,4 +1,15 @@
 body {
-  background: #eeccaa;
+  background: #aacccc;
   color: #000000;
+}
+dt, dd {
+	display: inline;
+	margin: 0;
+}
+dt {
+	font-weight: bold;
+}
+dd:after {
+	content: '\A';
+	white-space: pre;
 }

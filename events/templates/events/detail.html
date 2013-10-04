@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h1> {{event.name}}</h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if event.published %}
+	<h1> {{event.name}}</h1>
+	{% if event.flyer %}
+		<img src="{{event.flyer.url}}">
+	{% endif %}
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{{event.date}} @ {{event.location}} <br>
-Admission: {{event.admission}}
-<h3>More info:</h3>
-{{event.description}}
+	<p>
+			<dl>
+				<dt>Date: </dt><dd>{{event.date}}</dd>
+				<dt>Location: </dt><dd>{{event.location}}</dd>
+				<dt>Admission: </dt><dd>{{event.admission}}</dd>
+				<dt>Age limit: </dt>
+				<dd>
+					{% if event.ageLimit %}
+						{{event.ageLimit}}
+					{% else %}
+						No
+					{% endif %}
+				</dd>
+			</dl>
+	</p>
+	<h3>More info:</h3>
+	{{event.description}}
+{% else %}
+	<p> Event not published </p>
+{% endif %}
 {% endblock %}
