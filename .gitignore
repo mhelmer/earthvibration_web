@@ -5,3 +5,6 @@ local_settings.py
 
 Session.vim
 .ropeproject
+
+#virtualenv
+.env
