@@ -7,6 +7,5 @@ urlpatterns = patterns('',
     url(r'^soundsystem/', views.SoundsystemView.as_view(), name="soundsystem"),
     url(r'^studio/', views.StudioView.as_view(), name="studio"),
     url(r'^releases/', views.ReleasesView.as_view(), name="releases"),
-    url(r'^media/', views.MediaView.as_view(), name="media"),
     url(r'^contact/', views.ContactView.as_view(), name="contact"),
 )

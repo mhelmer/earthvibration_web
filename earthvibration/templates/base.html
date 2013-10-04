@@ -12,12 +12,10 @@
 </div>
 <div id="nav">
 {% block nav %}
-	<ul id="nav">
+	<ul>
 		<li>{% block nav-home %}<a href="{% url "home" %}">Home</a>{% endblock %}</li>
 		<li>{% block nav-soundsystem %}<a href="{% url "soundsystem" %}">Sound System</a>{% endblock %}</li>
 		<li>{% block nav-studio %}<a href="{% url "studio" %}">Studio</a>{% endblock %}</li>
-		<li>{% block nav-releases %}<a href="{% url "releases" %}">Releases</a>{% endblock %}</li>
-		<li>{% block nav-media %}<a href="{% url "media" %}">Media</a>{% endblock %}</li>
 		<li>{% block nav-events %}<a href="{% url "events:index" %}">Events</a>{% endblock %}</li>
 		<li>{% block nav-contact %}<a href="{% url "contact" %}">Contact</a>{% endblock %}</li>
 	</ul>
