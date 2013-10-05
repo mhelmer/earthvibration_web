@@ -14,13 +14,14 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'ev_django',                      # Or path to database file if using sqlite3.
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ev_django',  # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'earthvibration',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '127.0.0.1',  # Empty for localhost through domain sockets
+        'PORT': '',           # Set to empty string for default.
     }
 }
 
@@ -54,7 +55,7 @@ USE_TZ = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(PROJECT_DIR)),
-                           "media." + os.path.basename(PROJECT_DIR))
+                          "media." + os.path.basename(PROJECT_DIR))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -77,6 +78,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_DIR, "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -84,7 +86,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -94,8 +96,14 @@ SECRET_KEY = 'quf#xj*4z7-j1%es%(r%iz+e^_4*0g+(^08uf=3g2ff^qz2=5+'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -113,10 +121,10 @@ ROOT_URLCONF = 'earthvibration.urls'
 WSGI_APPLICATION = 'earthvibration.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	os.path.join(PROJECT_DIR, "templates"),
+    os.path.join(PROJECT_DIR, "templates"),
 )
 
 INSTALLED_APPS = (
@@ -126,10 +134,19 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    # Optional commenting support
+    'django.contrib.comments',
+
+    # Optional tagging
+    'taggit',
+    #'taggit_autocomplete_modified',
+
+
+    # My apps:
     'polls',
     'home',
     'events',

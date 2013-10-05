@@ -13,3 +13,14 @@ dd:after {
 	content: '\A';
 	white-space: pre;
 }
+#nav, #content {
+	float: left;
+}
+#footer {
+	clear: both;
+	text-align: center;
+}
+#wrapper {
+	margin: 0 auto;
+	width: 960px;
+}

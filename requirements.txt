@@ -1,7 +1,15 @@
 Django==1.5.4
 MySQL-python==1.2.4
+
+## needed for ImageField
+PIL==1.1.7
+
 argparse==1.2.1
 distribute==0.7.3
+
+## tagging support
+django-taggit==0.10
+
 ## FIXME: could not find svn URL in dependency_links for this package:
 flup==1.0.3.dev-20110405
 wsgiref==0.1.2
