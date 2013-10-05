@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
         """
         return Event.objects.filter(
             published=True
-        ).order_by('-pub_date')
+        ).order_by('-date')
 
 
 class DetailView(generic.DetailView):

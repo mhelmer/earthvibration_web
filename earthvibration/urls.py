@@ -15,6 +15,10 @@ urlpatterns = patterns('',
     url(r'^events/', include('events.urls', namespace="events")),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
+
+    # Blog
+    url(r'^blog/', include('blog.urls', namespace="blog")),
+    url(r'^comments/', include('django.contrib.comments.urls')),
 )
 
 if settings.DEBUG :

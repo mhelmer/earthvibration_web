@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load comments %}
+
+{% block nav-blog %}<strong class="nav-active">Blog</strong>{% endblock %}
+{% block main %}
+	<h2>Blog entries</h2>
+	{% for blog_entry in published_blog_entries %}
+		<div class="blog-entry">
+			<h3><a href="">{{ blog_entry.title }}</a></h3>
+			<p class="entry-content">{{ blog_entry.content }}</p>
+			<p class="signature">
+				By {{ blog_entry.author }}, {{ blog_entry.date_published }}
+			</p>
+			{% get_comment_count for blog_entry as comment_count %}
+			<p class="comment">This post has {{ comment_count }} comments.</p>
+		</div>
+	{% endfor %}
+{% endblock %}
