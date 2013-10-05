@@ -4,7 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>Earth Vibration - {% block title %}Sound System and Studio {% endblock %}</title>           
-	<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+	{% block link %}{% endblock %}
+	{% block script %}{% endblock %}
+	<meta name="description" content="{% block meta-description %}{% endblock %}">
+	<meta name="keywords" content="{% block meta-keywords %}{% endblock %}">
 </head>
 <body>
 <div id="header">
@@ -12,7 +16,8 @@
 </div>
 <div id="nav">
 {% block nav %}
-	<ul>
+<ul>
+		<li>{% block nav-blog %}<a href="{% url "entry_archive_index" %}">Blog</a>{% endblock %}</li>
 		<li>{% block nav-home %}<a href="{% url "home" %}">Home</a>{% endblock %}</li>
 		<li>{% block nav-soundsystem %}<a href="{% url "soundsystem" %}">Sound System</a>{% endblock %}</li>
 		<li>{% block nav-studio %}<a href="{% url "studio" %}">Studio</a>{% endblock %}</li>
@@ -22,7 +27,7 @@
 {% endblock %}
 </div>
 <div id="content">
-	{% block content %}
+	{% block main %}
 	<p>My Content</p>    
 	{% endblock %}
 </div>
