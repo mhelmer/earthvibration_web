@@ -1,26 +1,65 @@
 body {
-  background: #aacccc;
-  color: #000000;
+  background: #acc;
+  color: #000;
+  font-size: 81.3%;
 }
-dt, dd {
+#events dt, dd {
 	display: inline;
 	margin: 0;
 }
-dt {
+#events dt {
 	font-weight: bold;
 }
-dd:after {
+#events dd:after {
 	content: '\A';
 	white-space: pre;
 }
-#nav, #content {
+nav, main {
 	float: left;
+	margin: 10px;
+	display:inline-block;
 }
-#footer {
+footer {
 	clear: both;
 	text-align: center;
 }
 #wrapper {
 	margin: 0 auto;
 	width: 960px;
+}
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: underline;
+}
+.nav-active {
+	text-decoration: underline;
+}
+.tags a {
+	font-size: 0.8em;
+}
+.tags li {
+	display: inline;
+	margin: 0.3em;
+}
+ul.tags {
+    list-style:none;
+    padding-left: 0;
+}
+
+.blog-detail form input,
+.blog-detail form textarea {
+	background: transparent;
+	border: 1px solid #000;
+}
+.blog-detail label {
+	width: 150px;
+	display: inline-block;
+}
+
+dl#comments {
+	border: 1px solid #000;
 }
