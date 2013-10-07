@@ -1,0 +1,23 @@
+{% load comments %}
+{% load blog_extras %}
+
+{% block blog-entry %}
+		<div class="blog-entry">
+			{% block entry-title %}
+				<h3><a href="{{ blog_entry.get_absolute_url }}">
+						{{ blog_entry.title }}
+				</a></h3>
+			{% endblock %}
+			<p class="signature">
+				{{ blog_entry.date_published }} by {{ blog_entry.author }}
+			</p>
+			<p class="entry-content">{{ blog_entry.content }}</p>
+			{% list_tags blog_entry %}
+			{% get_comment_count for blog_entry as comment_count %}
+			{% block comment %}
+				<p class="comment_count">This post has
+					<a href="{{ blog_entry.get_absolute_url }}">{{ comment_count }} comments</a>.
+				</p>
+			{% endblock %}
+		</div>
+{% endblock %}

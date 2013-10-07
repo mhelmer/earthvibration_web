@@ -7,6 +7,7 @@ admin.autodiscover()
 
 from home import views, urls
 import events.views
+import blog.views
 
 
 urlpatterns = patterns('',
@@ -17,11 +18,15 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Blog
+    #url(r'^', include('blog.urls', namespace="blog")),
+    url(r'^$', blog.views.IndexView.as_view(), name='index'),
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^comments/', include('django.contrib.comments.urls')),
 )
 
-if settings.DEBUG :
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    )
+if settings.DEBUG:
+    urlpatterns += patterns('', (r'^media/(?P<path>.*)$',
+                                 'django.views.static.serve',
+                                 {'document_root': settings.MEDIA_ROOT,
+                                  'show_indexes': True}),
+                            )

@@ -18,8 +18,7 @@
 	<div id="nav">
 	{% block nav %}
 	<ul>
-			<li>{% block nav-blog %}<a href="{% url "blog:index" %}">Blog</a>{% endblock %}</li>
-			<li>{% block nav-home %}<a href="{% url "home" %}">Home</a>{% endblock %}</li>
+			<li>{% block nav-blog %}<a href="{% url "index" %}">Blog</a>{% endblock %}</li>
 			<li>{% block nav-soundsystem %}<a href="{% url "soundsystem" %}">Sound System</a>{% endblock %}</li>
 			<li>{% block nav-studio %}<a href="{% url "studio" %}">Studio</a>{% endblock %}</li>
 			<li>{% block nav-events %}<a href="{% url "events:index" %}">Events</a>{% endblock %}</li>

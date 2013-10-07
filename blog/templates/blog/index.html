@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load comments %}
+{% load blog_extras %}
 
 {% block nav-blog %}<strong class="nav-active">Blog</strong>{% endblock %}
 {% block main %}
-	<h2>Blog entries</h2>
+	{% block sub-title %} <h2>Blog entries</h2>{% endblock %}
 	{% for blog_entry in published_blog_entries %}
 		<div class="blog-entry">
-			<h3><a href="">{{ blog_entry.title }}</a></h3>
-			<p class="entry-content">{{ blog_entry.content }}</p>
+			<h3><a href="{{ blog_entry.get_absolute_url }}">{{ blog_entry.title }}</a></h3>
 			<p class="signature">
-				By {{ blog_entry.author }}, {{ blog_entry.date_published }}
+				{{ blog_entry.date_published }} by {{ blog_entry.author }}
 			</p>
+			<p class="entry-content">{{ blog_entry.content }}</p>
+			{% list_tags blog_entry %}
 			{% get_comment_count for blog_entry as comment_count %}
+			{% block comment %}
 			<p class="comment">This post has {{ comment_count }} comments.</p>
+			{% endblock %}
 		</div>
 	{% endfor %}
 {% endblock %}

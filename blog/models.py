@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from taggit.managers import TaggableManager
 
 
@@ -12,10 +13,14 @@ class BlogEntry(models.Model):
 
     tags = TaggableManager()
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('devblog_post_url', (), {
-            'year': self.date_published.year,
-            'month': self.date_published.month,
-            'day': self.date_published.day,
-            'slug': self.slug})
+        return reverse('blog:details', kwargs={
+            'year': self.date_published.strftime("%Y"),
+            'month': self.date_published.strftime("%b").lower(),
+            'day': self.date_published.strftime("%d"),
+            'slug': self.slug,
+        })
+
+    # this should be moved into a template tag instead
+    def get_absolute_tag_url(tag):
+        return reverse('blog:tags', kwargs={'slug': 'en-tag'})
