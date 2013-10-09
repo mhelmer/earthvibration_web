@@ -16,8 +16,18 @@ def show_blog_entry(blog_entry):
     return {'blog_entry': blog_entry}
 
 
+def show_attached_content(blog_entry):
+    """
+    We want to be able to attach content like media and events to blog
+    entries. Template tag should output these attachments.
+    """
+    raise NotImplementedError, "Attached content has not been implemented yet"
+    pass
+
+
 def show_blog_entry_details(blog_entry):
     return {'blog_entry': blog_entry}
+
 
 register.simple_tag(get_tag_url)
 register.inclusion_tag('blog/list_tags.html')(list_tags)
