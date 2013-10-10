@@ -3,14 +3,14 @@ body {
   color: #000;
   font-size: 81.3%;
 }
-#events dt, dd {
+.event dt, dd {
 	display: inline;
 	margin: 0;
 }
-#events dt {
+.event dt {
 	font-weight: bold;
 }
-#events dd:after {
+.event dd:after {
 	content: '\A';
 	white-space: pre;
 }

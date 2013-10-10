@@ -21,8 +21,14 @@ def show_attached_content(blog_entry):
     We want to be able to attach content like media and events to blog
     entries. Template tag should output these attachments.
     """
-    raise NotImplementedError, "Attached content has not been implemented yet"
-    pass
+    if blog_entry.attachment_type.model == 'event':
+        t = template.loader.get_template('blog/show_attachment_event.html')
+        return t.render(template.Context({
+            'event': blog_entry.attachment_object}))
+    elif blog_entry.attachment_type.model == 'music':
+        raise NotImplementedError("Music not implemented yet, thus we can't"
+                                  "return any preview")
+    raise TypeError("Only event and music attachments are supported")
 
 
 def show_blog_entry_details(blog_entry):
@@ -34,3 +40,5 @@ register.inclusion_tag('blog/list_tags.html')(list_tags)
 register.inclusion_tag('blog/show_entry.html')(show_blog_entry)
 register.inclusion_tag('blog/show_entry_details.html')(
     show_blog_entry_details)
+
+register.simple_tag(show_attached_content)

@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 from taggit.managers import TaggableManager
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 
 class BlogEntry(models.Model):
     title = models.CharField(max_length=150)
@@ -12,6 +15,12 @@ class BlogEntry(models.Model):
     date_modified = models.DateTimeField('last modified', auto_now=True)
     content = models.TextField()
     author = models.ForeignKey(User)
+
+    attachment_type = models.ForeignKey(ContentType, blank=True, null=True,
+                                        on_delete=models.SET_NULL)
+    attachment_object_id = models.PositiveIntegerField(blank=True, null=True)
+    attachment_object = generic.GenericForeignKey('attachment_type',
+                                                  'attachment_object_id')
 
     tags = TaggableManager()
 

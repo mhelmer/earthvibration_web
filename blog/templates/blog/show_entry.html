@@ -12,6 +12,13 @@
 				{{ blog_entry.date_published }} by {{ blog_entry.author }}
 			</p>
 			<p class="entry-content">{{ blog_entry.content }}</p>
+
+			{% if blog_entry.attachment_object %}
+				<div class="attachment">
+					{% show_attached_content blog_entry %}
+				</div>
+			{% endif %}
+				
 			{% list_tags blog_entry %}
 			{% get_comment_count for blog_entry as comment_count %}
 			{% block comment %}
