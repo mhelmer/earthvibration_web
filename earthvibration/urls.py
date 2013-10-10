@@ -13,6 +13,7 @@ import blog.views
 urlpatterns = patterns('',
     # Examples:
     url(r'^', include('home.urls')),
+    url(r'^djplayer/', include('djplayer.urls', namespace="djplayer")),
     url(r'^events/', include('events.urls', namespace="events")),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),

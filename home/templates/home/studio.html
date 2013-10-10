@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% block script %}
+	{{ block.super }}
+{% endblock %}
+{% block link %}
+	{{ block.super }}
+{% endblock %}
 
 {% block nav-studio %}<strong class="nav-active">Studio</strong>{% endblock %}
 
 {% block main %}
 <h2>Releases</h2>
 <h2>Media</h2>
-....
 {% endblock %}
