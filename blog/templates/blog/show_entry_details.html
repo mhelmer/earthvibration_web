@@ -5,7 +5,10 @@
 {% block entry-title %}<h2>{{ blog_entry.title }}</h2>{% endblock %}
 {% block comment %}
 	{% get_comment_count for blog_entry as comment_count %}
-	<p class="comment">This post has {{ comment_count }} comments:</p>
-	{% render_comment_list for blog_entry %}
+	<p class="comment">This post has {{ comment_count }} comments</p>
+	{% if comment_count %}
+		{% render_comment_list for blog_entry %}
+	{% endif %}
+	<h3>Place a comment</h3>
 	{% render_comment_form for blog_entry %}
 {% endblock %}

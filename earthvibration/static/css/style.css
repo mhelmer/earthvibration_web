@@ -63,3 +63,12 @@ ul.tags {
 dl#comments {
 	border: 1px solid #000;
 }
+
+.blog-entry {
+	border: 1px solid #abb;
+	margin: 10px;
+	padding: 10px;
+}
+.blog-entry .attachment {
+	border: 1px solid #abb;
+}
