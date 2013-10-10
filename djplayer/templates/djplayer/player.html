@@ -9,28 +9,9 @@
 {% block script %}
 	{{ block.super }}
 	{% djwidget_js_base %}
-	<script type="text/javascript">
-	//<![CDATA[
-	$(document).ready(function(){
-
-		$("#jquery_jplayer_1").jPlayer({
-			ready: function (event) {
-				$(this).jPlayer("setMedia", {
-					mp3:"/media/Space_Vibration_Dub.mp3"
-				});
-			},
-			swfPath: "/static/djplayer/js",
-			supplied: "mp3",
-			wmode: "window",
-			smoothPlayBar: true,
-			keyEnabled: true,
-			cssSelectorAncestor: "#jp_container_1"
-		});
-	});
-	//]]>
-	</script>
+	{% djwidget_script_tune tune %}
 {% endblock %}
 {% block main %}
 
-{% djplayer_widget 1 %}
+{% djplayer_widget tune %}
 {% endblock %}

@@ -4,7 +4,11 @@ register = template.Library()
 
 
 def djplayer_widget(tune):
-    return {'tags': tune}
+    return {'tune': tune}
+
+
+def djwidget_script_tune(tune):
+    return {'tune': tune}
 
 
 def djwidget_js_base():
@@ -15,4 +19,5 @@ def djwidget_js_base():
            'src="/static/djplayer/js/jquery.jplayer.min.js"></script>'
 
 register.inclusion_tag('djplayer/djplayer_widget.html')(djplayer_widget)
+register.inclusion_tag('djplayer/djplayer_script.html')(djwidget_script_tune)
 register.simple_tag(djwidget_js_base)

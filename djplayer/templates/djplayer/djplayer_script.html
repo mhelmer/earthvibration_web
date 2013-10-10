@@ -1,0 +1,20 @@
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+		$("#jquery_jplayer_{{ tune.pk }}").jPlayer({
+		ready: function (event) {
+			$(this).jPlayer("setMedia", {
+			mp3:"/media/{{ tune.mp3_file }}"
+			});
+		},
+		swfPath: "/static/djplayer/js",
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		cssSelectorAncestor: "#jp_container_{{ tune.pk }}"
+	});
+});
+//]]>
+</script>

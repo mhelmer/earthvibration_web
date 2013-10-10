@@ -1,10 +1,11 @@
-
 from django.conf.urls import patterns, url
-from django.views.generic import TemplateView
+
+from djplayer import views
 
 
 urlpatterns = patterns('',
-                       url(r'^$', TemplateView.as_view(
-                           template_name="djplayer/player.html"),
-                           name='index'),
+                       url(r'^(?P<year>\d{4})/(?P<slug>[-\w]+)/$',
+                           views.PlayerView.as_view(
+                               template_name="djplayer/player.html"),
+                           name='player'),
                        )
