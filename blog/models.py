@@ -13,6 +13,9 @@ class BlogEntry(models.Model):
 
     tags = TaggableManager()
 
+    def __unicode(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('blog:details', kwargs={
             'year': self.date_published.strftime("%Y"),
