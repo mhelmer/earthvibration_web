@@ -23,3 +23,12 @@ class Event(models.Model):
 
     flyer_tag.short_description = 'Flyer'
     flyer_tag.allow_tags = True
+
+    def __unicode__(self):
+        return u"%s" % self.name
+
+    def related_label(self):
+        return u"%s (%s)" % (self.name, self.id)
+
+    def related_autocomplete_lookup(self):
+        return u"%s,%s" % (self.id, self.name)
