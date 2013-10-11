@@ -16,7 +16,7 @@ class BlogEntryAdmin (admin.ModelAdmin):
     readonly_fields = ('date_published', 'date_modified',)
 
     def save_model(self, request, obj, form, change):
-        if not self.pk:
+        if obj.pk is not None:
             obj.author = request.user
         obj.save()
 

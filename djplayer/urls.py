@@ -4,8 +4,7 @@ from djplayer import views
 
 
 urlpatterns = patterns('',
+                       url(r'^$', views.IndexView.as_view(), name='index'),
                        url(r'^(?P<year>\d{4})/(?P<slug>[-\w]+)/$',
-                           views.PlayerView.as_view(
-                               template_name="djplayer/player.html"),
-                           name='player'),
+                           views.PlayerView.as_view(), name='player'),
                        )

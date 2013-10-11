@@ -638,3 +638,61 @@ a.jp-shuffle-off:hover {
 }
 
 /* @end */
+
+
+/* 
+ * My custom fields , overriding
+ *
+ * */
+div.jp-audio {
+	width:520px;
+}
+
+div.jp-audio div.jp-type-single div.jp-interface {
+	width: 420px;
+	float: right;
+}
+
+div.jp-audio div.jp-cover {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+}
+
+div.jp-audio div.jp-title,
+div.jp-audio div.playlist-title {
+}
+
+div.jp-audio div.jp-type-single div.jp-interface,
+div.jp-audio div.jp-type-playlist div.jp-interface,
+div.jp-audio-stream div.jp-type-single div.jp-interface
+{
+	height:72px;
+}
+
+div.jp-audio ul.jp-controls {
+    padding: 17px 20px 0;
+}
+div.jp-audio div.jp-progress {
+	top:29px;
+}
+div.jp-audio div.jp-time-holder {
+	top:47px;
+}
+div.jp-audio div.jp-volume-bar {
+	top:34px;
+}
+div.jp-title,
+div.jp-playlist {
+	width:420px;
+	float: left;
+}
+div.jp-audio {
+	-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+	height: 100px;
+	border-style: none;
+}

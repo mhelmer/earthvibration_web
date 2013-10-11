@@ -8,6 +8,9 @@ $(document).ready(function(){
 			mp3:"/media/{{ tune.mp3_file }}"
 			});
 		},
+		play: function() { // To avoid multiple jPlayers playing together.
+			$(this).jPlayer("pauseOthers");
+		},
 		swfPath: "/static/djplayer/js",
 		supplied: "mp3",
 		wmode: "window",

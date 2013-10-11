@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load comments %}
 {% load blog_extras %}
+{% block link %}
+	{{ block.super }}
+	<link href="/static/djplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" >
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% if blog_entry.attachment_object %}
+		{% script_attached_js blog_entry %}
+	{% endif %}
+{% endblock %}
 
 {% block main %}
 	{% block sub-title %}{% endblock %}

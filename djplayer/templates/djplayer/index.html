@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+	{% block sub-title %} <h2>djplayer</h2>{% endblock %}
+	{% if tunes %}
+		<ul>
+			{% for tune in tunes %}
+				<li>
+					<a href="{{ tune.get_absolute_url }}">
+						{{ tune.title }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

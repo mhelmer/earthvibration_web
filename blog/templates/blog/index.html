@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% load blog_extras %}
+{% block link %}
+	{{ block.super }}
+	<link href="/static/djplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" >
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% script_attached_js published_blog_entries %}
+{% endblock %}
 
 {% block nav-blog %}<strong class="nav-active">Blog</strong>{% endblock %}
 {% block main %}

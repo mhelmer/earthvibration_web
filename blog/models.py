@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from taggit.managers import TaggableManager
 
@@ -22,16 +23,17 @@ class BlogEntry(models.Model):
     attachment_object = generic.GenericForeignKey('attachment_type',
                                                   'attachment_object_id')
 
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
-    def __unicode(self):
+    def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
+        local_pub_date = timezone.localtime(self.date_published)
         return reverse('blog:details', kwargs={
-            'year': self.date_published.strftime("%Y"),
-            'month': self.date_published.strftime("%b").lower(),
-            'day': self.date_published.strftime("%d"),
+            'year': local_pub_date.strftime("%Y"),
+            'month': local_pub_date.strftime("%b").lower(),
+            'day': local_pub_date.strftime("%d"),
             'slug': self.slug,
         })
 
