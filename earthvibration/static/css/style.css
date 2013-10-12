@@ -53,7 +53,7 @@ ul.tags {
 .blog-detail form input,
 .blog-detail form textarea {
 	background: transparent;
-	border: 1px solid #000;
+	border: 1px solid #899;
 }
 .blog-detail label {
 	width: 150px;
@@ -61,7 +61,8 @@ ul.tags {
 }
 
 dl#comments {
-	border: 1px solid #000;
+	border: 1px solid #899;
+	padding: 10px;
 }
 
 .blog-entry {
