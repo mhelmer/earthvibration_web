@@ -26,21 +26,19 @@ def script_attached_js(blog_entries):
     templatetag to include the necessary javascript for all blog entries
     """
     try:
-        blog_entries_dj = blog_entries.filter(attachment_type__model='tune',)
+        blog_entries_dj = blog_entries.filter(attachment_type__model='tune')
     except AttributeError:
         blog_entries_dj = BlogEntry.objects.filter(
             attachment_object_id=blog_entries.attachment_object.pk,
             attachment_type__model='tune')
 
-    tunes = Tune.objects.filter(pk__in=blog_entries_dj)
-
     r = ''
-    if tunes is not None:
+    players = [{'tune': entry.attachment_object, 'suffix': entry.pk}
+               for entry in blog_entries_dj]
+    if players is not None:
         r += djplayer_extras.djwidget_js_base()
-        for tune in tunes:
-            r += render_to_string('djplayer/djplayer_script.html',
-                                  {'tune': tune}
-                                  )
+        r += render_to_string('djplayer/djplayer_script.html',
+                              {'players': players})
     return r
 
 
@@ -56,7 +54,8 @@ def show_attached_content(blog_entry):
     elif blog_entry.attachment_type.model == 'tune':
         t = template.loader.get_template('blog/show_attachment_tune.html')
         return t.render(template.Context({
-            'tune': blog_entry.attachment_object}))
+            'tune': blog_entry.attachment_object,
+            'suffix': blog_entry.pk}))
     raise TypeError("Only event and music attachments are supported")
 
 

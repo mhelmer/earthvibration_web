@@ -3,12 +3,14 @@ from django import template
 register = template.Library()
 
 
-def djplayer_widget(tune):
-    return {'tune': tune}
+def djplayer_widget(tune, suffix=''):
+    return {'tune': tune,
+            'suffix': suffix}
 
 
-def djwidget_script_tune(tune):
-    return {'tune': tune}
+def djwidget_script_tune(tune, suffix=''):
+    players = [{'tune': tune, 'suffix': suffix}]
+    return {'players': players}
 
 
 def djwidget_js_base():

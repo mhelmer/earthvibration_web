@@ -1,11 +1,11 @@
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function(){
-
-		$("#jquery_jplayer_{{ tune.pk }}").jPlayer({
+	{% for player in players %}
+	$("#jquery_jplayer_{{ player.tune.pk }}_{{ player.suffix}}").jPlayer({
 		ready: function (event) {
 			$(this).jPlayer("setMedia", {
-			mp3:"/media/{{ tune.mp3_file }}"
+			mp3:"/media/{{ player.tune.mp3_file }}"
 			});
 		},
 		play: function() { // To avoid multiple jPlayers playing together.
@@ -16,8 +16,9 @@ $(document).ready(function(){
 		wmode: "window",
 		smoothPlayBar: true,
 		keyEnabled: true,
-		cssSelectorAncestor: "#jp_container_{{ tune.pk }}"
+		cssSelectorAncestor: "#jp_container_{{ player.tune.pk }}_{{ player.suffix }}"
 	});
+	{% endfor %}
 });
 //]]>
 </script>
