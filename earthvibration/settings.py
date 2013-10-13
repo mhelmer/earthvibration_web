@@ -153,6 +153,7 @@ INSTALLED_APPS = (
     'events',
     'blog',
     'djplayer',
+    'discography',
 )
 
 # A sample logging configuration. The only tangible logging

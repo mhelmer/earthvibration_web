@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load djplayer_extras %}
+{% load discography_extras %}
+{% load thumbnail %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% script_attached_js releases "release" %}
+{% endblock %}
+
+{% block main %}
+<h2>Releases</h2>
+<div id="releases">
+	{% if releases %}
+	{% for release in releases %}
+		<div class="tune">
+			<h3><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></h3>
+			{% djplayer_widget release.tune "release" %}
+			<dl>
+				<dt>Label</dt><dd>{{ release.label }}</dd>
+				<dt>Slug</dt><dd>{{ release.slug }}</dd>
+				<dt>Released</dt><dd>{{ release.release_date|date:"M Y" }}</dd>
+				<dt>Catalog Number</dt><dd>{{ release.catalog_number }}</dd>
+			</dl>
+			<dl>
+			{% for track in release.track_set.all %}
+				<dt>{{ track.tracknum }}</dt>
+				  <dd><a href="{{ track.get_absolute_url }}">{{ track.artist }}</a> - {{ track.title }}</dd>
+			{% endfor %}
+			</dl>
+			{% for coverimage in release.coverimage_set.all %}
+				{% thumbnail coverimage.image "200x200" crop="center" as im %}
+					<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+				{% endthumbnail %}
+			{% endfor %}
+		</div>
+	{% endfor %}
+	{% endif %}
+</div>
+{% endblock %}

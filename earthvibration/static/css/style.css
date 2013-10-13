@@ -3,16 +3,20 @@ body {
   color: #000;
   font-size: 81.3%;
 }
-.event dt, dd {
+#releases dt, #releases dd,
+.event dt, .event dd {
 	display: inline;
 	margin: 0;
 }
-.event dt {
+#releases dt, .event dt {
 	font-weight: bold;
 }
-.event dd:after {
+#releases dd:after, .event dd:after {
 	content: '\A';
 	white-space: pre;
+}
+#releases dt:after, .event dt:after{
+	content: ': '
 }
 nav, main {
 	float: left;
