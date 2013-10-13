@@ -20,4 +20,5 @@ class BlogEntryAdmin (admin.ModelAdmin):
             obj.author = request.user
         obj.save()
 
+
 admin.site.register(BlogEntry, BlogEntryAdmin)

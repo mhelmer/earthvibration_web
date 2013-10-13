@@ -141,9 +141,10 @@ INSTALLED_APPS = (
     # Optional commenting support
     'django.contrib.comments',
 
-    # Optional tagging
+    # External apps
     'taggit',
     #'taggit_autocomplete_modified',
+    'sorl.thumbnail',
 
 
     # My apps:

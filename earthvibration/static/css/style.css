@@ -60,16 +60,15 @@ ul.tags {
 	display: inline-block;
 }
 
-dl#comments {
-	border: 1px solid #899;
-	padding: 10px;
-}
-
 .blog-entry {
-	border: 1px solid #abb;
 	margin: 10px;
-	padding: 10px;
 }
 .blog-entry .attachment {
+}
+.blog-entry, .blog-entry .attachment, dl#comments {
 	border: 1px solid #abb;
+	padding: 10px;
+}
+dl#comments {
+	border: 1px solid #899;
 }

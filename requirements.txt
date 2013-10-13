@@ -12,4 +12,5 @@ django-taggit==0.10
 
 ## FIXME: could not find svn URL in dependency_links for this package:
 flup==1.0.3.dev-20110405
+sorl-thumbnail==11.12
 wsgiref==0.1.2

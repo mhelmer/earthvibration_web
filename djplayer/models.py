@@ -2,6 +2,8 @@ from django.core.urlresolvers import reverse
 from django.db import models
 import os
 
+from sorl.thumbnail import ImageField
+
 
 def get_file_path(instance, filename):
     return os.path.join('audio', str(instance.date_created.year),
@@ -19,11 +21,8 @@ class Tune(models.Model):
     date_created = models.DateTimeField('date created', auto_now_add=True)
     date_published = models.DateTimeField('date published')
     mp3_file = models.FileField(upload_to=get_file_path)
-    album_art = models.ImageField(upload_to=get_image_path,
-                                  default='audio/AlbumArt.jpg')
-
-    def testml(self):
-        return 'setning'
+    album_art = ImageField(upload_to=get_image_path,
+                           default='audio/AlbumArt.jpg')
 
     def get_absolute_url(self):
         return reverse('djplayer:player', kwargs={
