@@ -3,7 +3,7 @@
 {% load blog_extras %}
 {% block link %}
 	{{ block.super }}
-	<link href="/static/djplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" >
+	{% djwidget_link_css %}
 {% endblock %}
 {% block script %}
 	{{ block.super }}

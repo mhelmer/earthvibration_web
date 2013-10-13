@@ -65,7 +65,8 @@ ul.tags {
 }
 .blog-entry .attachment {
 }
-.blog-entry, .blog-entry .attachment, dl#comments {
+.blog-entry, .blog-entry .attachment, dl#comments,
+#media-tunes .tune {
 	border: 1px solid #abb;
 	padding: 10px;
 }

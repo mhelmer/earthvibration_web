@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-{% block script %}
-	{{ block.super }}
-{% endblock %}
+{% load djplayer_extras %}
 {% block link %}
 	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% djwidget_script_tunes media_tunes "media" %}
 {% endblock %}
 
 {% block nav-studio %}<strong class="nav-active">Studio</strong>{% endblock %}
@@ -11,11 +15,14 @@
 {% block main %}
 <h2>Releases</h2>
 <h2>Media</h2>
+<div id="media-tunes">
 	{% if media_tunes %}
-		<ul>
-			{% for tune in media_tunes %}
-				<li><a href="{{ tune.get_absolute_url }}">{{ tune.title }}</a></li>
-			{% endfor %}
-		</ul>
+	{% for tune in media_tunes %}
+		<div class="tune">
+			<h3><a href="{{ tune.get_absolute_url }}">{{ tune.title }}</a></h3>
+			{% djplayer_widget tune "media" %}
+		</div>
+	{% endfor %}
 	{% endif %}
+</div>
 {% endblock %}
