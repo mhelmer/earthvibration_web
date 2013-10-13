@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 {% block main %}
 <div class="event">
 {% if event.published %}
 	<h1> {{event.name}}</h1>
 	{% if event.flyer %}
-		<img src="{{event.flyer.url}}">
+		{% thumbnail event.flyer "300" as im %}
+			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+		{% endthumbnail %}
 	{% endif %}
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
