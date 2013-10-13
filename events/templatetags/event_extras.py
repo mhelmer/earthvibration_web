@@ -7,7 +7,7 @@ register = template.Library()
 def list_past_events(events):
     past_events = events.filter(
         date__lte=timezone.now(),
-    ).order_by('date')
+    ).order_by('-date')
     return {'events': past_events, 'kind': 'past'}
 
 
