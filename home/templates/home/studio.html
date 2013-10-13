@@ -11,4 +11,11 @@
 {% block main %}
 <h2>Releases</h2>
 <h2>Media</h2>
+	{% if media_tunes %}
+		<ul>
+			{% for tune in media_tunes %}
+				<li><a href="{{ tune.get_absolute_url }}">{{ tune.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 {% endblock %}
