@@ -3,19 +3,18 @@ body {
   color: #000;
   font-size: 81.3%;
 }
-#releases dt, #releases dd,
-.event dt, .event dd {
+dl.label-list dt, dl.label-list dd {
 	display: inline;
 	margin: 0;
 }
-#releases dt, .event dt {
+dl.label-list dt {
 	font-weight: bold;
 }
-#releases dd:after, .event dd:after {
+dl.label-list dd:after {
 	content: '\A';
 	white-space: pre;
 }
-#releases dt:after, .event dt:after{
+dl.label-list dt:after{
 	content: ': '
 }
 nav, main {
