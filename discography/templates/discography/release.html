@@ -8,18 +8,12 @@
 {% block script %}
 	{{ block.super }}
 	{% djwidget_js_base %}
-	{% djwidget_script_tunes players "release" %}
+	{% djwidget_script_tune release.tune "release" %}
 {% endblock %}
 
 {% block main %}
-<h2>Releases</h2>
-<div id="releases">
-	{% if releases %}
-	<ul>
-		{% for release in releases %}
-			<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+<div id="release">
+	<h2>{{ release.title }}</h2>
+	{% show_release release %}
 </div>
 {% endblock %}

@@ -30,7 +30,10 @@ class ReleaseView(generic.TemplateView):
         context = super(ReleaseView, self).get_context_data(**kwargs)
 
         try:
-            release = Release.objects.get(slug=self.kwargs['slug'],)
+            release = Release.objects.get(
+                slug=self.kwargs['slug'],
+                release_date__year=self.kwargs['year']
+            )
         except Release.DoesNotExist:
             raise Http404
 

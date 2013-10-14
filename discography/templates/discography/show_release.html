@@ -1,0 +1,19 @@
+{% load djplayer_extras %}
+{% load thumbnail %}
+		{% djplayer_widget release.tune "release" %}
+		<dl class="label-list">
+			<dt>Label</dt><dd>{{ release.label }}</dd>
+			<dt>Released</dt><dd>{{ release.release_date|date:"M Y" }}</dd>
+			<dt>Catalog Number</dt><dd>{{ release.catalog_number }}</dd>
+		</dl>
+		<dl class="label-list">
+		{% for track in release.track_set.all %}
+			<dt>{{ track.tracknum }}</dt>
+				<dd><a href="{{ track.artist.get_absolute_url }}">{{ track.artist }}</a> - {{ track.title }}</dd>
+		{% endfor %}
+		</dl>
+		{% for coverimage in release.coverimage_set.all %}
+			{% thumbnail coverimage.image "200x200" crop="center" as im %}
+				<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			{% endthumbnail %}
+		{% endfor %}
