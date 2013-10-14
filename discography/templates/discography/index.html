@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load djplayer_extras %}
-{% load discography_extras %}
 {% load thumbnail %}
 {% block link %}
 	{{ block.super }}
@@ -9,7 +8,7 @@
 {% block script %}
 	{{ block.super }}
 	{% djwidget_js_base %}
-	{% script_attached_js releases "release" %}
+	{% djwidget_script_tunes players "release" %}
 {% endblock %}
 
 {% block main %}

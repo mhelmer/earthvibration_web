@@ -12,6 +12,13 @@ class IndexView(generic.ListView):
             published=True,
         )
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+
+        context['players'] = [rel.tune
+                              for rel in self.get_queryset()]
+        return context
+
 
 class ReleaseView(generic.TemplateView):
     model = Release
@@ -23,9 +30,7 @@ class ReleaseView(generic.TemplateView):
         context = super(ReleaseView, self).get_context_data(**kwargs)
 
         try:
-            release = Release.objects.get(
-                slug=self.kwargs['slug'],
-            )
+            release = Release.objects.get(slug=self.kwargs['slug'],)
         except Release.DoesNotExist:
             raise Http404
 
