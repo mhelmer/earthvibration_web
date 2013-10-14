@@ -8,6 +8,7 @@ class BlogEntryAdmin (admin.ModelAdmin):
                            'date_modified', 'content', 'attachment_type',
                            'attachment_object_id', 'author', 'tags']}),
     ]
+    prepopulated_fields = {"slug": ("title",)}
     list_display = ('title', 'date_published', 'date_modified', 'slug',
                     'author', 'attachment_type')
     list_filter = ['date_published']

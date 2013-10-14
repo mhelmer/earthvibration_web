@@ -55,12 +55,6 @@ class Artist(models.Model):
     slug = models.SlugField(unique=True)
     nationality = models.CharField(max_length=20)
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.s = slugify(self.q)
-
-        super(Artist, self).save(*args, **kwargs)
-
     def __unicode__(self):
         return self.name
 

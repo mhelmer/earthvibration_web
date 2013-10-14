@@ -20,6 +20,15 @@ class ReleaseAdmin(admin.ModelAdmin):
                  ]
     inlines = [TrackInline, CoverImageInline]
     date_hierachy = 'release_date'
+    prepopulated_fields = {"slug": ("title",)}
+
+
+class ArtistAdmin(admin.ModelAdmin):
+    fieldsets = [(None, {'fields':
+                         ['name', 'slug', 'nationality']})
+                 ]
+    prepopulated_fields = {"slug": ("name",)}
+
 
 admin.site.register(Release, ReleaseAdmin)
-admin.site.register(Artist)
+admin.site.register(Artist, ArtistAdmin)
