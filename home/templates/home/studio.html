@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load djplayer_extras %}
+{% load discography_extras %}
 {% block link %}
 	{{ block.super }}
 	{% djwidget_link_css %}
@@ -14,6 +15,7 @@
 
 {% block main %}
 <h2>Releases</h2>
+	{% list_releases %}
 <h2>Media</h2>
 <div id="media-tunes">
 	{% if media_tunes %}
