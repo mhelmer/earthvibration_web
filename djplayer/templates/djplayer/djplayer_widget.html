@@ -1,12 +1,7 @@
 {% load thumbnail %}
-<div id="jquery_jplayer_{{ tune.pk }}_{{ suffix }}" class="jp-jplayer"></div>
 <div id="jp_container_{{ tune.pk }}_{{ suffix }}" class="jp-audio">
 	<div class="jp-type-single">
-		<div class="jp-cover">
-			{% thumbnail tune.album_art "100x100" crop="center" as im %}
-				<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-			{% endthumbnail %}
-		</div>
+		<div id="jquery_jplayer_{{ tune.pk }}_{{ suffix }}" class="jp-jplayer jp-poster"></div>
 		<div class="jp-gui jp-interface">
 			<ul class="jp-controls">
 				<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>

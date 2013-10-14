@@ -7,5 +7,5 @@ urlpatterns = patterns('',
                        url(r'^$', views.IndexView.as_view(), name='index'),
                        url(r'^(?P<year>\d{4})/(?P<slug>[-\w]+)/$',
                            views.PlayerView.as_view(), name='player'),
-                       url(r'^playlist/$', views.IndexView.as_view()),
+                       url(r'^playlist/$', views.IndexView.as_view(template_name='djplayer/playlist.html')),
                        )

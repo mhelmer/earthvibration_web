@@ -26,6 +26,14 @@ def djwidget_js_base():
            'src="/static/djplayer/js/jquery.jplayer.min.js"></script>'
 
 
+def djwidget_js_playlist(tunes, suffix=''):
+    return {'tunes': tunes, 'suffix': suffix}
+
+
+def djwidget_playlist(suffix=''):
+    return {'suffix': suffix}
+
+
 def djwidget_link_css():
     return
 
@@ -35,3 +43,6 @@ register.inclusion_tag('djplayer/djplayer_script.html')(
     djwidget_script_tunes)
 register.simple_tag(djwidget_js_base)
 register.inclusion_tag('djplayer/djplayer_link_css.html')(djwidget_link_css)
+
+register.inclusion_tag('djplayer/djplayer_pl_js.html')(djwidget_js_playlist)
+register.inclusion_tag('djplayer/djplayer_pl.html')(djwidget_playlist)

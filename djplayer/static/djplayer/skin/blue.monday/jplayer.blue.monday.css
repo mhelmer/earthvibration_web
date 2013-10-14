@@ -653,7 +653,7 @@ div.jp-audio div.jp-type-single div.jp-interface {
 	float: right;
 }
 
-div.jp-audio div.jp-cover {
+div.jp-audio div.jp-poster {
 	float: left;
 	margin: 0;
 	padding: 0;
@@ -696,3 +696,4 @@ div.jp-audio {
 	height: 100px;
 	border-style: none;
 }
+
