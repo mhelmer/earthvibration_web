@@ -17,6 +17,16 @@ class IndexView(generic.ListView):
             date_published__lte=timezone.now()
         ).order_by('-date_published')
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        blog_entries_dj = BlogEntry.objects.filter(
+            attachment_type__model='tune')
+
+
+        context['players'] = [{'tune': dj_e.attachment_object, 'suffix': dj_e.pk}
+                              for dj_e in blog_entries_dj]
+        return context
+
 
 class DetailsView(generic.dates.DateDetailView):
     template_name = 'blog/details.html'

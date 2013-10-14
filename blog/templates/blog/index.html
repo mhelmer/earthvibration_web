@@ -7,7 +7,9 @@
 {% endblock %}
 {% block script %}
 	{{ block.super }}
-	{% script_attached_js published_blog_entries %}
+	{% djwidget_js_base %}
+	{% djwidget_js_players players %}
+
 {% endblock %}
 
 {% block nav-blog %}<strong class="nav-active">Blog</strong>{% endblock %}
