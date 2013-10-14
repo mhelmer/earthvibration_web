@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div id="artist">
+	<h2>{{ artist.name }}</h2>
+<h3>Appears on:</h3>
+	{% if releases %}
+		<ul>
+			{% for release in releases %}
+				<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
+{% endblock %}

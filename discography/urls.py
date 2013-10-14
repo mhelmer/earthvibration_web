@@ -8,5 +8,5 @@ urlpatterns = patterns('',
                        url(r'^(?P<year>\d{4})/(?P<slug>[-\w]+)/$',
                            views.ReleaseView.as_view(), name='release'),
                        url(r'^artist/(?P<slug>[-\w]+)/$',
-                           views.ReleaseView.as_view(), name='artist'),
+                           views.ArtistView.as_view(), name='artist'),
                        )

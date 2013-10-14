@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.views import generic
-from discography.models import Release
+from discography.models import Release, Artist
 
 
 class IndexView(generic.ListView):
@@ -38,4 +38,21 @@ class ReleaseView(generic.TemplateView):
             raise Http404
 
         context['release'] = release
+        return context
+
+
+class ArtistView(generic.DetailView):
+    context_object_name = 'artist'
+    template_name = 'discography/artist.html'
+    model = Artist
+    slug_field = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super(ArtistView, self).get_context_data(**kwargs)
+
+        tracks = context['artist'].track_set.all().values_list(
+            'release', flat=True).distinct()
+        context['releases'] = Release.objects.filter(
+            pk__in=tracks).order_by('release_date')
+
         return context
