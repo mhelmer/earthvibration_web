@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse
+from django.utils.text import slugify
 from django.db import models
 from sorl.thumbnail import ImageField
 import os
@@ -33,7 +35,10 @@ class Release(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return ''
+        return reverse('discography:release', kwargs={
+            'year': self.release_date.strftime("%Y"),
+            'slug': self.slug,
+        })
 
 
 class CoverImage(models.Model):
@@ -47,10 +52,22 @@ class CoverImage(models.Model):
 
 class Artist(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     nationality = models.CharField(max_length=20)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.s = slugify(self.q)
+
+        super(Artist, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('discography:artist', kwargs={
+            'slug': self.slug,
+        })
 
 
 class Track(models.Model):
