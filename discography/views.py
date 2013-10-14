@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Release.objects.filter(
             published=True,
-        )
+        ).order_by('-release_date')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

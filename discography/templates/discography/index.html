@@ -1,25 +1,18 @@
 {% extends "base.html" %}
-{% load djplayer_extras %}
-{% load discography_extras %}
-{% block link %}
-	{{ block.super }}
-	{% djwidget_link_css %}
-{% endblock %}
-{% block script %}
-	{{ block.super }}
-	{% djwidget_js_base %}
-	{% djwidget_script_tunes players "release" %}
-{% endblock %}
 
 {% block main %}
-<h2>Releases</h2>
 <div id="releases">
+<h2>Releases</h2>
 	{% if releases %}
-	<ul>
-		{% for release in releases %}
-			<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
+		{% regroup releases by release_date|date:"Y" as year_list %}
+		{% for releases_year in year_list %}
+			<h3>{{ releases_year.grouper }}</h3>
+			<ul>
+				{% for release in releases_year.list %}
+					<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
+				{% endfor %}
+			</ul>
 		{% endfor %}
-	</ul>
 	{% endif %}
 </div>
 {% endblock %}
