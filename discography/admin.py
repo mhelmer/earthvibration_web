@@ -1,5 +1,5 @@
 from django.contrib import admin
-from discography.models import Release, Track, Artist, CoverImage
+from discography.models import Release, Track, Artist, CoverImage, RelFormat
 from sorl.thumbnail.admin import AdminImageMixin
 
 
@@ -16,7 +16,7 @@ class CoverImageInline(AdminImageMixin, admin.TabularInline):
 class ReleaseAdmin(admin.ModelAdmin):
     fieldsets = [(None, {'fields':
                          ['title', 'slug', 'release_date', 'catalog_number',
-                          'published', 'tune', 'label']})
+                          'rel_format', 'published', 'tune', 'label']})
                  ]
     inlines = [TrackInline, CoverImageInline]
     date_hierachy = 'release_date'
@@ -32,3 +32,4 @@ class ArtistAdmin(admin.ModelAdmin):
 
 admin.site.register(Release, ReleaseAdmin)
 admin.site.register(Artist, ArtistAdmin)
+admin.site.register(RelFormat)

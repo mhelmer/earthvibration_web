@@ -5,7 +5,7 @@
 		<h3>{{ releases_year.grouper }}</h3>
 		<ul>
 			{% for release in releases_year.list %}
-				<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
+			<li><a href="{{ release.get_absolute_url }}">{{ release.title }} {{ release.rel_format }}</a></li>
 			{% endfor %}
 		</ul>
 	{% endfor %}

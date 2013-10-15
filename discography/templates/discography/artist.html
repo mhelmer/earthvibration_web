@@ -7,7 +7,7 @@
 	{% if releases %}
 		<ul>
 			{% for release in releases %}
-				<li><a href="{{ release.get_absolute_url }}">{{ release.title }}</a></li>
+			<li><a href="{{ release.get_absolute_url }}">{{ release.title }} {{ release.rel_format }}</a></li>
 			{% endfor %}
 		</ul>
 	{% endif %}

@@ -19,6 +19,13 @@ class Label(models.Model):
         return self.name
 
 
+class RelFormat(models.Model):
+    rel_format = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return self.rel_format
+
+
 class Release(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField('slug', unique_for_year='release_date')
@@ -27,6 +34,7 @@ class Release(models.Model):
     published = models.BooleanField()
     tune = models.ForeignKey(Tune)
     label = models.ForeignKey(Label)
+    rel_format = models.ForeignKey(RelFormat)
 
     class Meta:
         unique_together = ('label', 'catalog_number',)

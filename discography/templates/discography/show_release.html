@@ -3,6 +3,7 @@
 		{% djplayer_widget release.tune "release" %}
 		<dl class="label-list">
 			<dt>Label</dt><dd>{{ release.label }}</dd>
+			<dt>Format</dt><dd>{{ release.rel_format }}</dd>
 			<dt>Released</dt><dd>{{ release.release_date|date:"M Y" }}</dd>
 			<dt>Catalog Number</dt><dd>{{ release.catalog_number }}</dd>
 		</dl>
