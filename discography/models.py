@@ -1,5 +1,4 @@
 from django.core.urlresolvers import reverse
-from django.utils.text import slugify
 from django.db import models
 from sorl.thumbnail import ImageField
 import os
