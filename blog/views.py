@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        blog_entries_dj = BlogEntry.objects.filter(
+        blog_entries_dj = self.get_queryset().filter(
             attachment_type__model='tune')
 
         context['players'] = [{'tune': dj_e.attachment_object,
@@ -41,7 +41,7 @@ class DetailsView(generic.dates.DateDetailView):
         return context
 
 
-class TagView(generic.ListView):
+class TagView(IndexView):
     template_name = 'blog/tag.html'
     context_object_name = 'published_blog_entries'
     #Need to pass tag aswell, somehow
@@ -49,6 +49,7 @@ class TagView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['tag'] = Tag.objects.get(slug=self.kwargs['slug'])
+
         return context
 
     def get_queryset(self):
