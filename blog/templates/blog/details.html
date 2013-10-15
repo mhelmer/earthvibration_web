@@ -8,8 +8,9 @@
 {% endblock %}
 {% block script %}
 	{{ block.super }}
-	{% if blog_entry.attachment_object %}
-		{% script_attached_js blog_entry %}
+	{% if tune %}
+		{% djwidget_js_base %}
+		{% djwidget_js_tune tune blog_entry.pk %}
 	{% endif %}
 {% endblock %}
 

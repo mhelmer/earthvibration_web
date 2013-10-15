@@ -22,8 +22,8 @@ class IndexView(generic.ListView):
         blog_entries_dj = BlogEntry.objects.filter(
             attachment_type__model='tune')
 
-
-        context['players'] = [{'tune': dj_e.attachment_object, 'suffix': dj_e.pk}
+        context['players'] = [{'tune': dj_e.attachment_object,
+                               'suffix': dj_e.pk}
                               for dj_e in blog_entries_dj]
         return context
 
@@ -33,6 +33,12 @@ class DetailsView(generic.dates.DateDetailView):
     model = BlogEntry
     date_field = 'date_published'
     context_object_name = 'blog_entry'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailsView, self).get_context_data(**kwargs)
+        if context['blog_entry'].attachment_type.model == 'tune':
+            context['tune'] = context['blog_entry'].attachment_object
+        return context
 
 
 class TagView(generic.ListView):

@@ -8,7 +8,7 @@ def djplayer_widget(tune, suffix=''):
             'suffix': suffix}
 
 
-def djwidget_script_tune(tune, suffix=''):
+def djwidget_js_tune(tune, suffix=''):
     players = [{'tune': tune, 'suffix': suffix}]
     return {'players': players}
 
@@ -42,7 +42,7 @@ def djwidget_link_css():
     return
 
 register.inclusion_tag('djplayer/djplayer_widget.html')(djplayer_widget)
-register.inclusion_tag('djplayer/djplayer_script.html')(djwidget_script_tune)
+register.inclusion_tag('djplayer/djplayer_script.html')(djwidget_js_tune)
 register.inclusion_tag('djplayer/djplayer_script.html')(
     djwidget_script_tunes)
 register.inclusion_tag('djplayer/djplayer_script.html')(

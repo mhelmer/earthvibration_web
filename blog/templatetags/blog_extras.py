@@ -1,10 +1,5 @@
 from django import template
 from django.core.urlresolvers import reverse
-from django.template.loader import render_to_string
-
-from djplayer.templatetags import djplayer_extras
-from djplayer.models import Tune
-from blog.models import BlogEntry
 
 register = template.Library()
 
@@ -19,27 +14,6 @@ def list_tags(blog_entry):
 
 def show_blog_entry(blog_entry):
     return {'blog_entry': blog_entry}
-
-
-def script_attached_js(blog_entries):
-    """
-    templatetag to include the necessary javascript for all blog entries
-    """
-    try:
-        blog_entries_dj = blog_entries.filter(attachment_type__model='tune')
-    except AttributeError:
-        blog_entries_dj = BlogEntry.objects.filter(
-            attachment_object_id=blog_entries.attachment_object.pk,
-            attachment_type__model='tune')
-
-    r = ''
-    players = [{'tune': entry.attachment_object, 'suffix': entry.pk}
-               for entry in blog_entries_dj]
-    if players is not None:
-        r += djplayer_extras.djwidget_js_base()
-        r += render_to_string('djplayer/djplayer_script.html',
-                              {'players': players})
-    return r
 
 
 def show_attached_content(blog_entry):
@@ -70,4 +44,3 @@ register.inclusion_tag('blog/show_entry_details.html')(
     show_blog_entry_details)
 
 register.simple_tag(show_attached_content)
-register.simple_tag(script_attached_js)
