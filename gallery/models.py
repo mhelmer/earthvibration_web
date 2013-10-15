@@ -34,15 +34,28 @@ class Image(models.Model):
     gallery = models.ForeignKey(Gallery)
     image = ImageField(upload_to=get_image_path)
     location = models.ForeignKey(Location, blank=True, null=True)
-    order = models.IntegerField(blank=True, null=True)
+    order = models.IntegerField()
+
+    class Meta:
+        ordering = ('order',)
+        unique_together = ('slug', 'gallery')
 
     def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('gallery:image',
-                       kwargs={'galleryslug': self.gallery.slug, 'slug': self.slug})
+                       kwargs={'albumslug': self.gallery.slug,
+                               'slug': self.slug})
 
-    class Meta:
-        ordering = ('order',)
-        unique_together = ('slug', 'gallery')
+    def get_next(self):
+        next = Image.objects.filter(order__gt=self.order)
+        if next:
+            return next[0]
+        return Image.objects.filter(order__lt=self.order)[0]
+
+    def get_prev(self):
+        prev = Image.objects.filter(order__lt=self.order).reverse()
+        if prev:
+            return prev[0]
+        return Image.objects.filter(order__gt=self.order).reverse()[0]
