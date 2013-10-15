@@ -640,16 +640,20 @@ a.jp-shuffle-off:hover {
 /* @end */
 
 
-/* 
+/*
  * My custom fields , overriding
  *
  * */
 div.jp-audio {
 	width:520px;
+	overflow: hidden;
 }
 
-div.jp-audio div.jp-type-single div.jp-interface {
+div.jp-audio div.jp-type-single div.jp-interface,
+div.jp-audio div.jp-type-playlist div.jp-interface
+{
 	width: 420px;
+	height: 100px;
 	float: right;
 }
 
@@ -669,31 +673,29 @@ div.jp-audio div.jp-type-single div.jp-interface,
 div.jp-audio div.jp-type-playlist div.jp-interface,
 div.jp-audio-stream div.jp-type-single div.jp-interface
 {
-	height:72px;
 }
 
 div.jp-audio ul.jp-controls {
-    padding: 17px 20px 0;
+    padding: 31px 20px 0;
 }
 div.jp-audio div.jp-progress {
-	top:29px;
+	top: 43px;
 }
 div.jp-audio div.jp-time-holder {
-	top:47px;
+	top: 57px;
 }
 div.jp-audio div.jp-volume-bar {
-	top:34px;
+	top: 48px;
 }
 div.jp-title,
 div.jp-playlist {
-	width:420px;
+	width:100%;
 	float: left;
+	border-style: none;
 }
 div.jp-audio {
 	-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
-	height: 100px;
 	border-style: none;
 }
-
