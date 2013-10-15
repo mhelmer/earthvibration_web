@@ -76,3 +76,19 @@ ul.tags {
 dl#comments {
 	border: 1px solid #899;
 }
+
+.clearboth { clear: both; }
+
+/* @begin gallery */
+.gallery .img-wrapper {
+	line-height: 150px;
+	float: left;
+	padding: 5px;
+	width: 150px;
+	height: 150px;
+	text-align: center;
+}
+.gallery .img-wrapper img {
+	vertical-align: middle;
+}
+/* @end gallery */

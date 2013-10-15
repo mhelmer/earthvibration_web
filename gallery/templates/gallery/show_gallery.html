@@ -1,0 +1,15 @@
+{% load thumbnail %}
+	<div class="gallery">
+		{% for image in gallery.image_set.all %}
+			<div class="img-wrapper">
+				{% thumbnail image.image "150x150" as im %}
+					<a href="{{ image.get_absolute_url }}">
+						<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+					</a>
+				{% endthumbnail %}
+			</div>
+			{% if forloop.counter|divisibleby:width %}
+				<br class="clear-both">
+			{% endif %}
+		{% endfor %}
+	</div>

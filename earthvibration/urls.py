@@ -6,7 +6,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 from home import views, urls
-import events.views
 import blog.views
 
 
@@ -19,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^events/', include('events.urls', namespace="events")),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^gallery/', include('gallery.urls', namespace='gallery')),
 
     # Blog
     #url(r'^', include('blog.urls', namespace="blog")),
