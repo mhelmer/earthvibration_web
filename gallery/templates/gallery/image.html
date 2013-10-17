@@ -5,10 +5,13 @@
 {% block title %}Gallery - {{ image.title }}{% endblock %}
 {% block main %}
 	<h2>{{ image.gallery }}</h2>
+	<a href="{{ image.gallery.get_absolute_url }}">Back to album</a>
+	<p>
 	{% thumbnail image.image "600x600" as im %}
 		<a href="{{ image.get_next.get_absolute_url }}">
 			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
 		</a>
 	{% endthumbnail %}
+	</p>
 	<p>{{image.title}}</p>
 {% endblock %}

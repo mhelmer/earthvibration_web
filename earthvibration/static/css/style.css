@@ -22,6 +22,12 @@ nav, main {
 	margin: 10px;
 	display:inline-block;
 }
+nav {
+	width: 150px;
+}
+main {
+	width: 770px;
+}
 footer {
 	clear: both;
 	text-align: center;
@@ -80,15 +86,33 @@ dl#comments {
 .clearboth { clear: both; }
 
 /* @begin gallery */
-.gallery .img-wrapper {
-	line-height: 150px;
-	float: left;
+#gallery-widget a.browse {
+	width: 50px;
+	line-height: 100px;
 	padding: 5px;
+}
+#gallery-widget .img-wrapper {
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	padding: 5px;
+}
+.gallery .img-wrapper {
 	width: 150px;
 	height: 150px;
+	line-height: 150px;
+	padding: 5px;
+}
+.gallery .img-wrapper,
+#gallery-widget .img-wrapper,
+#gallery-widget .browse
+{
+	float: left;
 	text-align: center;
 }
-.gallery .img-wrapper img {
+#gallery .img-wrapper img,
+#gallery-widget .img-wrapper img
+{
 	vertical-align: middle;
 }
 /* @end gallery */

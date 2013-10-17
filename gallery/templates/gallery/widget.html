@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block script %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		var $width = 4;
+		var $inc = 1;
+		var $widget = "#gallery-widget";
+		var $img = $widget + " .img-wrapper";
+
+		var $first = 0;
+		var $last = $first + $width - 1;
+		var $n = $( "#gallery-widget .img-wrapper" ).length;
+
+		$( $widget + " .browse" ).on( "click", function() {
+			return false;
+		});
+
+		$( $img ).slice($last+1).hide();
+
+		$( $widget + " #right" ).on( "click", function() {
+			if ($last < $n-1) {
+				$first += $inc;
+				$last += $inc;
+			} else { return; }
+			
+			$ ( $img ).slice($first-$inc, $first).hide();
+			$ ( $img ).slice($last-$inc+1, $last+1).show();
+		});
+
+		$( $widget + " #left" ).on( "click", function() {
+			if ($first >= $inc) {
+				$first -= $inc;
+				$last -= $inc;
+			} else { return; }
+
+			$ ( $img ).slice($first, $first+$inc).show();
+			$ ( $img ).slice($last+1, $last+$inc+1).hide();
+		}); 
+	}); 
+ </script>
+
+{% endblock %}
+{% block main %}
+	<div id="gallery-widget" class="gallery-widget">
+		<a href="" id="left" class="browse">left</a>
+		{% for image in album.image_set.all %}
+			<div class="img-wrapper">
+				{% thumbnail image.image "100x100" as im %}
+					<a href="{{ image.get_absolute_url }}">
+						<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+					</a>
+				{% endthumbnail %}
+			</div>
+		{% endfor %}
+		<a href="" id="right" class="browse">right</a>
+	</div>
+{% endblock %}

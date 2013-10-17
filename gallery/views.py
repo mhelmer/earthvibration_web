@@ -9,9 +9,23 @@ class IndexView(generic.ListView):
     context_object_name = 'galleries'
 
     def get_queryset(self):
-        return Gallery.objects.filter(
-            pub_date__lte=timezone.now(),
-        )
+        return Gallery.get_published()
+
+
+class AlbumView(generic.DetailView):
+    model = Gallery
+    template_name = 'gallery/album.html'
+    context_object_name = 'album'
+    slug_field = 'slug'
+
+    def get_object(self):
+        try:
+            gallery = super(AlbumView, self).get_object()
+            if gallery.pub_date >= timezone.now():
+                raise Gallery.DoesNotExist
+        except Gallery.DoesNotExist:
+            raise Http404
+        return gallery
 
 
 class ImageView(generic.TemplateView):
@@ -20,9 +34,9 @@ class ImageView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ImageView, self).get_context_data(**kwargs)
         try:
-            context['image'] = Image.objects.get(
+            context['image'] = Image.get_published().get(
                 slug=self.kwargs['slug'],
-                gallery__slug=self.kwargs['galleryslug']
+                gallery__slug=self.kwargs['albumslug']
             )
         except Image.DoesNotExist:
             raise Http404

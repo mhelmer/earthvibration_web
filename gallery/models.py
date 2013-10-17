@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 from django.db import models
 from sorl.thumbnail import ImageField
 import os
@@ -16,6 +17,13 @@ class Gallery(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('gallery:album', kwargs={'slug': self.slug})
+
+    @staticmethod
+    def get_published():
+        return Gallery.objects.filter(pub_date__lte=timezone.now())
 
 
 class Location(models.Model):
@@ -49,13 +57,17 @@ class Image(models.Model):
                                'slug': self.slug})
 
     def get_next(self):
-        next = Image.objects.filter(order__gt=self.order)
+        next = Image.get_published().filter(order__gt=self.order)
         if next:
             return next[0]
-        return Image.objects.filter(order__lt=self.order)[0]
+        return Image.get_published().filter(order__lt=self.order)[0]
 
     def get_prev(self):
-        prev = Image.objects.filter(order__lt=self.order).reverse()
+        prev = Image.get_published().filter(order__lt=self.order).reverse()
         if prev:
             return prev[0]
-        return Image.objects.filter(order__gt=self.order).reverse()[0]
+        return Image.get_published().filter(order__gt=self.order).reverse()[0]
+
+    @staticmethod
+    def get_published():
+        return Image.objects.filter(pub_date__lte=timezone.now())

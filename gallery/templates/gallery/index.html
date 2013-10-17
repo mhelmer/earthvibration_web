@@ -4,7 +4,7 @@
 {% block title %}Gallery{% endblock %}
 {% block main %}
 		{% for gallery in galleries %}
-			<h3>{{ gallery }}</h3>
+		<h3><a href="{{ gallery.get_absolute_url }}">{{ gallery }}</a></h3>
 			{% show_gallery gallery 4 %}
 		{% endfor %}
 {% endblock %}
