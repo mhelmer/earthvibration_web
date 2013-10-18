@@ -48,9 +48,7 @@ $widget.children( " .left " ).on( "click", function() {
 });
 
 $(function() {
-	// Needs a slightly better implementation
-	// especially considering the selectors below, which will select too
-	// much if multiple widgets exists..
+	var widget = '.gallery-widget'
     var image = $('.gallery-widget img');
     var box = $('.gallery-widget .focus');
     var close = $('.gallery-widget .close');
@@ -65,18 +63,19 @@ $(function() {
         var src = $this.attr('data-full');
 		var height = $this.attr('data-full-height');
 		var width = $this.attr('data-full-width');
-        box.find('img').remove();
-        box.append('<img src=\"' + src + '\" />');
-		box.height(height);
-		box.css('margin-top', -height/2);
-		box.width(width);
-		box.css('margin-left', -width/2);
+		var $mybox = $this.parents(widget).children('.focus').fadeIn();
+        $mybox.find('img').remove();
+        $mybox.append('<img src=\"' + src + '\" />');
+		$mybox.height(height);
+		$mybox.css('margin-top', -height/2);
+		$mybox.width(width);
+		$mybox.css('margin-left', -width/2);
 		var next = $this.parents(".img-wrapper").next(".img-wrapper").find("img");
-		box.data('next', next)
-        box.fadeIn();
-		close.fadeIn();
+		$mybox.data('next', next)
+        $mybox.fadeIn();
+
+		$this.parents(widget).children('.close').fadeIn();
         images.addClass('darken');
-        images.append('<div class="overlay">');
     });
 	box.on('click', function() {
 		var next = $(this).data('next');
