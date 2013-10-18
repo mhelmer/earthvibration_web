@@ -8,10 +8,11 @@
 {% endblock %}
 {% block script %}
 	{{ block.super }}
+	{% djwidget_js_base %}
 	{% if tune %}
-		{% djwidget_js_base %}
 		{% djwidget_js_tune tune blog_entry.pk %}
 	{% endif %}
+	<script src="/static/gallery/js/jquery.widget.js"></script>
 {% endblock %}
 
 {% block main %}

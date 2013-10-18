@@ -11,7 +11,7 @@
 			<p class="signature">
 				{{ blog_entry.date_published }} by {{ blog_entry.author }}
 			</p>
-			<p class="entry-content">{{ blog_entry.content|linebreaks }}</p>
+			<div class="entry-content">{{ blog_entry.content|linebreaks }}</div>
 
 			{% if blog_entry.attachment_object %}
 				<div class="attachment">

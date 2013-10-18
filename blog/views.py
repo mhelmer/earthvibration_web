@@ -36,8 +36,10 @@ class DetailsView(generic.dates.DateDetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailsView, self).get_context_data(**kwargs)
-        if context['blog_entry'].attachment_type.model == 'tune':
-            context['tune'] = context['blog_entry'].attachment_object
+        entry = context[self.context_object_name]
+        if entry.attachment_object:
+            if entry.attachment_type.model == 'tune':
+                context['tune'] = entry.attachment_object
         return context
 
 

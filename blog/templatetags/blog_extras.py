@@ -30,6 +30,11 @@ def show_attached_content(blog_entry):
         return t.render(template.Context({
             'tune': blog_entry.attachment_object,
             'suffix': blog_entry.pk}))
+    elif blog_entry.attachment_type.model == 'gallery':
+        t = template.loader.get_template('blog/show_attachment_gallery.html')
+        return t.render(template.Context({
+            'album': blog_entry.attachment_object}))
+
     raise TypeError("Only event and music attachments are supported")
 
 
