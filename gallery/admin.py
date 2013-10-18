@@ -11,17 +11,17 @@ class GalleryForm(forms.ModelForm):
 
     class Media:
         js = (
-            'http://code.jquery.com/jquery-latest.min.js',
-            'http://code.jquery.com/ui/1.10.3/jquery-ui.js',
-            '/static/gallery/js/menu-sort.js',
-            '/static/js/collapse-inline.js',
+            #'http://code.jquery.com/jquery-latest.min.js',
+            #'http://code.jquery.com/ui/1.10.3/jquery-ui.js',
+            #'/static/gallery/js/menu-sort.js',
+            #'/static/js/collapse-inline.js',
         )
 
 
 class ImageInline(AdminImageMixin, admin.StackedInline):
     fieldsets = [
         (None, {'fields':
-                ['title', 'slug', 'subtitle', 'location', 'image'],
+                ['title', 'slug', 'subtitle', 'location', 'image', 'order'],
                 }),
     ]
     model = Image
