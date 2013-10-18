@@ -48,9 +48,12 @@ $widget.children( " .left " ).on( "click", function() {
 });
 
 $(function() {
+	// Needs a slightly better implementation
+	// especially considering the selectors below, which will select too
+	// much if multiple widgets exists..
     var image = $('.gallery-widget img');
-    var box = $('.focus');
-    var close = $('.focus .close');
+    var box = $('.gallery-widget .focus');
+    var close = $('.gallery-widget .close');
     var images = $('.gallery-widget img ');
     
 	$(".gallery-widget .img-wrapper > a" ).on( "click", function() {
@@ -68,13 +71,24 @@ $(function() {
 		box.css('margin-top', -height/2);
 		box.width(width);
 		box.css('margin-left', -width/2);
+		var next = $this.parents(".img-wrapper").next(".img-wrapper").find("img");
+		box.data('next', next)
         box.fadeIn();
+		close.fadeIn();
         images.addClass('darken');
         images.append('<div class="overlay">');
     });
+	box.on('click', function() {
+		var next = $(this).data('next');
+		if (next.length > 0) {
+			next.click();
+		} else {
+			close.click();
+		}
+	});
     close.on('click', function() {
-        box.css('display', 'none');
+        box.fadeOut();
+        close.fadeOut();
         images.removeClass('darken');
-        $('.overlay').remove();
     });
 });
