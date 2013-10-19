@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div id="releases">
 <h2>Releases</h2>
+<div class="content" id="releases">
 	{% if releases %}
 		{% regroup releases by release_date|date:"Y" as year_list %}
 		{% for releases_year in year_list %}

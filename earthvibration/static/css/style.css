@@ -1,8 +1,46 @@
+/* @begin basic colors */
+/* *, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+ */
+body, html { height: 100%; }
 body {
-	background: #acc;
-	color: #000;
+	position: relative;
+	background: #352630;
 	font-size: 81.3%;
+	font-family: 'Josefin Slab', serif;
 }
+nav, nav a {
+}
+nav, header, footer, main > div, h2 {
+	background: #e9dfcc;
+}
+nav, header, main, footer, h2, .content-holder {
+	padding: 10px;
+}
+main {
+	padding-top: 0;
+}
+body, a, h1, h2, h3, h4, h5, h6, .content-holder {
+	color: #352630;
+}
+
+h1, h1 a {
+	color: #cd5b51;
+}
+h2 a, h3 a, h4 a, h5 a, h6 a,
+h2, h3, h4, h5, h6 {
+	color: #cd5b51;
+}
+h2, .content {
+	margin: 0 10px;
+}
+.content {
+	margin: 10px;
+	padding: 10px;
+}
+/* @end basic colors */
+
 dl.label-list dt, dl.label-list dd {
 	display: inline;
 	margin: 0;
@@ -23,10 +61,10 @@ nav, main {
 	display:inline-block;
 }
 nav {
-	width: 150px;
+	width: 130px;
 }
 main {
-	width: 770px;
+	width: 750px;
 }
 footer {
 	clear: both;
@@ -39,7 +77,6 @@ footer {
 a {
 	font-weight: bold;
 	text-decoration: none;
-	color: #000;
 }
 a:hover {
 	text-decoration: underline;
@@ -59,12 +96,12 @@ ul.tags {
 	padding-left: 0;
 }
 
-.blog-detail form input,
-.blog-detail form textarea {
+.content form input,
+.content form textarea {
 	background: transparent;
 	border: 1px solid #899;
 }
-.blog-detail label {
+.content label {
 	width: 150px;
 	display: inline-block;
 }
@@ -130,6 +167,7 @@ dl#comments {
 	left: 50%;
     display: none;
     z-index: 10;
+	cursor: pointer;
 }
 
 .gallery-widget .close {
