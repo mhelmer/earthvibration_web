@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles  %}
 {% load djplayer_extras %}
 {% load discography_extras %}
 {% block link %}
@@ -14,6 +15,8 @@
 {% block nav-studio %}<strong class="nav-active">Studio</strong>{% endblock %}
 
 {% block main %}
+<img src="{% static "home/studio_small.jpg" %}">
+
 <h2>Releases</h2>
 	{% list_releases %}
 <h2>Media</h2>

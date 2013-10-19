@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load comments %}
 {% load blog_extras %}
 {% load djplayer_extras %}
@@ -12,7 +13,7 @@
 	{% if tune %}
 		{% djwidget_js_tune tune blog_entry.pk %}
 	{% endif %}
-	<script src="/static/gallery/js/jquery.widget.js"></script>
+	<script src="{% static "gallery/js/jquery.widget.js" %}"></script>
 {% endblock %}
 
 {% block main %}

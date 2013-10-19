@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+from django.conf import settings
 
 from models import Gallery, Image
 from sorl.thumbnail.admin import AdminImageMixin
@@ -13,8 +14,8 @@ class GalleryForm(forms.ModelForm):
         js = (
             #'http://code.jquery.com/jquery-latest.min.js',
             #'http://code.jquery.com/ui/1.10.3/jquery-ui.js',
-            #'/static/gallery/js/menu-sort.js',
-            #'/static/js/collapse-inline.js',
+            #settings.STATIC_URL + 'gallery/js/menu-sort.js',
+            #settings.STATIC_URL + 'js/collapse-inline.js',
         )
 
 
