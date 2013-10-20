@@ -142,6 +142,8 @@ INSTALLED_APPS = (
     'fluent_comments',
     'crispy_forms',
     'django.contrib.comments',
+    # Some customizations
+    'comments',
 
     # External apps
     'taggit',
@@ -158,6 +160,8 @@ INSTALLED_APPS = (
     'discography',
     'gallery',
 )
+
+COMMENTS_APP = 'comments'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
