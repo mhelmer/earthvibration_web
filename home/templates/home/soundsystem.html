@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block nav-soundsystem %}<strong class="nav-active">Sound System</strong>{% endblock %}
 
 {% block main %}
 <h2>Sound System</h2>
 <div class="content">
-	Sound system content
+	<img width="413" height="600" alt="Earth Vibration Stack" src="{% static "home/soundsystem_small.jpg" %}">
+	<figcaption>The Earth Vibration Stack.</figcaption>
 </div>
 {% endblock %}

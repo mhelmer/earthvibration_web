@@ -76,6 +76,7 @@ $(function() {
 
 		$this.parents(widget).children('.close').fadeIn();
         images.addClass('darken');
+		$(" body ").addClass('modal-open');
     });
 	box.on('click', function() {
 		var next = $(this).data('next');
@@ -89,5 +90,6 @@ $(function() {
         box.fadeOut();
         close.fadeOut();
         images.removeClass('darken');
+		$(" body ").removeClass('modal-open');
     });
 });
