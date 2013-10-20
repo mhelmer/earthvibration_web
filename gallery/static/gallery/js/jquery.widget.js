@@ -48,48 +48,48 @@ $widget.children( " .left " ).on( "click", function() {
 });
 
 $(function() {
-	var widget = '.gallery-widget'
-    var image = $('.gallery-widget img');
-    var box = $('.gallery-widget .focus');
-    var close = $('.gallery-widget .close');
-    var images = $('.gallery-widget img ');
+    var widget = '#main div.gallery-widget';
+    var $widget = $(widget);
+    var $box = $widget.find('div.focus');
+    var $close = $widget.find('div.close');
+    var $images = $widget.find(' img ');
     
 	$(".gallery-widget .img-wrapper > a" ).on( "click", function() {
 		return false;
 	});
 
-    image.on('click', function() {
+    $images.on('click', function() {
         var $this = $(this);
         var src = $this.attr('data-full');
 		var height = $this.attr('data-full-height');
 		var width = $this.attr('data-full-width');
-		var $mybox = $this.parents(widget).children('.focus').fadeIn();
+		var $mybox = $this.parents(widget).children('div.focus').fadeIn();
         $mybox.find('img').remove();
         $mybox.append('<img src=\"' + src + '\" />');
 		$mybox.height(height);
 		$mybox.css('margin-top', -height/2);
 		$mybox.width(width);
 		$mybox.css('margin-left', -width/2);
-		var next = $this.parents(".img-wrapper").next(".img-wrapper").find("img");
+		var next = $this.parents("div.img-wrapper").next("div.img-wrapper").find("img");
 		$mybox.data('next', next)
         $mybox.fadeIn();
 
-		$this.parents(widget).children('.close').fadeIn();
-        images.addClass('darken');
+		$this.parents(widget).children('div.close').fadeIn();
+        $images.addClass('darken');
 		$(" body ").addClass('modal-open');
     });
-	box.on('click', function() {
+	$box.on('click', function() {
 		var next = $(this).data('next');
 		if (next.length > 0) {
 			next.click();
 		} else {
-			close.click();
+			$close.click();
 		}
 	});
-    close.on('click', function() {
-        box.fadeOut();
-        close.fadeOut();
-        images.removeClass('darken');
+    $close.on('click', function() {
+        $box.fadeOut();
+        $close.fadeOut();
+        $images.removeClass('darken');
 		$(" body ").removeClass('modal-open');
     });
 });
