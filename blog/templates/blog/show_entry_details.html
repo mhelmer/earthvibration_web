@@ -8,9 +8,7 @@
 {% block comment %}
 	{% get_comment_count for blog_entry as comment_count %}
 	<p class="comment">This post has {{ comment_count }} comments</p>
-	{% if comment_count %}
-		{% render_comment_list for blog_entry %}
-	{% endif %}
+	{% render_comment_list for blog_entry %}
 	<h3>Place a comment</h3>
 	{% render_comment_form for blog_entry %}
 {% endblock %}

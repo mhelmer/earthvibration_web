@@ -4,9 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>Earth Vibration - {% block title %}Sound System and Studio {% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "fluent_comments/css/ajaxcomments.css" %}" />
 	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 	{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" title="default">{% endblock %}
 	{% block script %}{% endblock %}
+	<script type="text/javascript" src="{% static "fluent_comments/js/ajaxcomments.js" %}"></script>
 	<meta name="description" content="{% block meta-description %}{% endblock %}">
 	<meta name="keywords" content="{% block meta-keywords %}{% endblock %}">
 </head>
@@ -26,7 +28,7 @@
 		</ul>
 	{% endblock %}
 	</nav>
-	<main>
+	<main id="main">
 		{% block main %}
 		<p>My Content</p>    
 		{% endblock %}

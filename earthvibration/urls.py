@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     #url(r'^', include('blog.urls', namespace="blog")),
     url(r'^$', blog.views.IndexView.as_view(), name='index'),
     url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^comments/', include('fluent_comments.urls')),
 )
 
 if settings.DEBUG:

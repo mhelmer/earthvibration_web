@@ -139,6 +139,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     # Optional commenting support
+    'fluent_comments',
+    'crispy_forms',
     'django.contrib.comments',
 
     # External apps
