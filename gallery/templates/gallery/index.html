@@ -3,8 +3,13 @@
 
 {% block title %}Gallery{% endblock %}
 {% block main %}
-		{% for gallery in galleries %}
-		<h3><a href="{{ gallery.get_absolute_url }}">{{ gallery }}</a></h3>
-			{% show_gallery gallery 4 %}
-		{% endfor %}
+		<h2>Gallery</h2>
+		<div class="content">
+			{% for gallery in galleries %}
+				<div class="album cf">
+					<h3><a href="{{ gallery.get_absolute_url }}">{{ gallery }}</a></h3>
+					{% show_gallery gallery 4 %}
+				</div>
+			{% endfor %}
+		</div>
 {% endblock %}

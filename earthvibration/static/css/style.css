@@ -41,16 +41,19 @@ h2, .content {
 	margin: 10px;
 	padding: 10px;
 }
+.content p {
+	width: 35em;
+}
 nav, main {
 	float: left;
 	margin: 10px;
 	display:inline-block;
 }
 nav {
-	width: 130px;
+	width: 150px;
 }
 main {
-	width: 750px;
+	width: 760px;
 }
 footer {
 	clear: both;
@@ -197,3 +200,18 @@ body.modal-open {
     overflow: hidden;
 }
 /* @end gallery */
+/* @begin clearfix */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+/* @end clearfix */

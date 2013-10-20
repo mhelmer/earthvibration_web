@@ -2,12 +2,12 @@
 {% load blog_extras %}
 
 {% block blog-entry %}
+		{% block entry-title %}
+			<h3><a href="{{ blog_entry.get_absolute_url }}">
+					{{ blog_entry.title }}
+			</a></h3>
+		{% endblock %}
 		<div class="content blog-entry">
-			{% block entry-title %}
-				<h3><a href="{{ blog_entry.get_absolute_url }}">
-						{{ blog_entry.title }}
-				</a></h3>
-			{% endblock %}
 			<p class="signature">
 				{{ blog_entry.date_published }} by {{ blog_entry.author }}
 			</p>
