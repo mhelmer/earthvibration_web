@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load djplayer_extras %}
+
+{% block title %} playlist test {% endblock %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% djwidget_js_playlist tunes "1" %}
+{% endblock %}
+{% block main %}
+
+{% djwidget_playlist "1" %}
+{% endblock %}

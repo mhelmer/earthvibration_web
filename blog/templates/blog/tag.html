@@ -1,0 +1,4 @@
+{% extends "blog/index.html" %}
+
+{% block nav-blog %}<a href="{% url "blog:index" %}">Blog</a>{% endblock %}
+{% block sub-title %} <h2>Blog entries tagged &quot;{{ tag.name }}&quot;</h2>{% endblock %}

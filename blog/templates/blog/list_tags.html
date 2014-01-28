@@ -1,0 +1,8 @@
+{% load blog_extras %}
+{% if tags %}
+	<ul class="tags">
+		{% for tag in tags %}
+			<li><a href="{% get_tag_url tag %}">{{ tag.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% endif %}

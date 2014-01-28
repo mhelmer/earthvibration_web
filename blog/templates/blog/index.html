@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load blog_extras %}
+{% load djplayer_extras %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% djwidget_js_players players %}
+	<script src="{% static "gallery/js/jquery.widget.js" %}"></script>
+{% endblock %}
+
+{% block nav-blog %}<strong class="nav-active">Blog</strong>{% endblock %}
+{% block main %}
+	{% block sub-title %} <h2>Blog entries</h2>{% endblock %}
+	{% for blog_entry in published_blog_entries %}
+		{% show_blog_entry blog_entry %}
+	{% endfor %}
+{% endblock %}

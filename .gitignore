@@ -8,3 +8,6 @@ Session.vim
 
 #virtualenv
 .env
+
+# Fontconfig tmp was created venv for some reason
+fontconfig

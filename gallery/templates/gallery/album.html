@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load gallery_extras %}
+
+{% block title %}Gallery{% endblock %}
+{% block main %}
+		<h2>{{ album }}</h2>
+		<div class="content">
+			{% show_gallery album 4 %}
+			<br class="clearboth">
+		</div>
+{% endblock %}

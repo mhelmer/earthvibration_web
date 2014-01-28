@@ -1,0 +1,28 @@
+{% load thumbnail %}
+{% load staticfiles %}
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+	{% for player in players %}
+	$("#jquery_jplayer_{{ player.tune.pk }}_{{ player.suffix}}").jPlayer({
+		ready: function (event) {
+			$(this).jPlayer("setMedia", {
+			mp3:"/media/{{ player.tune.mp3_file }}",
+			poster:"{% thumbnail player.tune.album_art "100x100" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
+			});
+		},
+		play: function() { // To avoid multiple jPlayers playing together.
+			$(this).jPlayer("pauseOthers");
+		},
+swfPath: "{% static "djplayer/js" %}",
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		cssSelectorAncestor: "#jp_container_{{ player.tune.pk }}_{{ player.suffix }}",
+		size: { width: "100px", height: "100px" }
+	});
+	{% endfor %}
+});
+//]]>
+</script>

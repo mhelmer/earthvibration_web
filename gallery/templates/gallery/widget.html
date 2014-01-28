@@ -1,0 +1,21 @@
+{% load thumbnail %}
+	<div id="gallery-widget" class="gallery-widget">
+		<a href="" class="left browse">left</a>
+		{% for image in album.image_set.all %}
+			<div class="img-wrapper">
+				{% thumbnail image.image "720x720" as im_full %}
+					{% thumbnail image.image "100x100" as im %}
+						<a href="{{ image.get_absolute_url }}">
+							<img data-full="{{ im_full.url }}" data-full-width="{{ im_full.width}}" data-full-height="{{ im_full.height}}" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ im.title}}">
+						</a>
+					{% endthumbnail %}
+				{% endthumbnail %}
+			</div>
+		{% endfor %}
+		<a href="" class="browse right">right</a>
+		<div class="focus">
+		</div>
+		<div class="close">
+		</div>
+	</div>
+	<br class="clearboth">

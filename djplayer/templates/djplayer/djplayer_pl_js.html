@@ -1,0 +1,28 @@
+{% load thumbnail %}
+{% load staticfiles %}
+<script type="text/javascript" src="{% static "djplayer/js/jquery.jplayer.min.js" %}"></script>
+<script type="text/javascript" src="{% static "djplayer/js/jplayer.playlist.min.js" %}"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+	new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_{{ suffix }}",
+		cssSelectorAncestor: "#jp_container_{{ suffix }}"
+	}, [
+		{% for tune in tunes %} {
+			title:"{{ tune.title }}",
+			mp3:"/media/{{ tune.mp3_file }}",
+			poster:"{% thumbnail tune.album_art "100x100" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
+		}, {% endfor %}
+	], {
+		swfPath: "{% static "djplayer/js" %}",
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		size: { width: "100px", height: "100px" }
+	});
+});
+//]]>
+</script>

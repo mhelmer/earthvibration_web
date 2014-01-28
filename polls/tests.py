@@ -73,7 +73,7 @@ class PollViewTests(TestCase):
         )
 
 
-class PollIndexDetailTests(TestCase):
+class PollDetailViewTests(TestCase):
     def test_detail_view_with_a_future_poll(self):
         """
         The detail view of a poll with a pub_date in the future should

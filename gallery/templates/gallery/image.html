@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load gallery_extras %}
+{% load thumbnail %}
+
+{% block title %}Gallery - {{ image.title }}{% endblock %}
+{% block main %}
+	<h2>{{ image.gallery }}</h2>
+	<div class="content">
+		<a href="{{ image.gallery.get_absolute_url }}">Back to album</a>
+		<br class="clearboth">
+		{% thumbnail image.image "600x600" as im %}
+			<a href="{{ image.get_next.get_absolute_url }}">
+				<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			</a>
+		{% endthumbnail %}
+		<br class="clearboth">
+		<imagecaption>{{image.title}}</imagecaption>
+	</div>
+{% endblock %}

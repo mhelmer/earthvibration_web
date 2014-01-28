@@ -1,0 +1,217 @@
+/* @begin basic colors */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+body {
+	background: #352630;
+}
+nav, nav a {
+}
+nav, header, footer, main > div, h2 {
+	background: #e9dfcc;
+}
+body, a, h1, h2, h3, h4, h5, h6, .content-holder {
+	color: #352630;
+}
+
+h1, h1 a {
+	color: #cd5b51;
+}
+h2 a, h3 a, h4 a, h5 a, h6 a,
+h2, h3, h4, h5, h6 {
+	color: #cd5b51;
+}
+/* @end basic colors */
+/* @begin basic layout */
+body {
+	position: relative;
+	font-size: 81.3%;
+	font-family: 'Josefin Slab', serif;
+}
+nav, header, main, footer, h2, .content-holder {
+	padding: 10px;
+}
+main {
+	padding-top: 0;
+}
+h2, .content {
+	margin: 0 10px;
+}
+.content {
+	margin: 10px;
+	padding: 10px;
+}
+.content p {
+	width: 35em;
+}
+nav, main {
+	float: left;
+	margin: 10px;
+	display:inline-block;
+}
+nav {
+	width: 150px;
+}
+main {
+	width: 760px;
+}
+footer {
+	clear: both;
+	text-align: center;
+}
+#wrapper {
+	margin: 0 auto;
+	width: 960px;
+}
+/* @end basic layout */
+
+figcaption {
+	font-style: italic;
+}
+nav ul {
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+dl.label-list dt, dl.label-list dd {
+	display: inline;
+	margin: 0;
+}
+dl.label-list dt {
+	font-weight: bold;
+}
+dl.label-list dd:after {
+	content: '\A';
+	white-space: pre;
+}
+dl.label-list dt:after{
+	content: ': '
+}
+a {
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.nav-active {
+	text-decoration: underline;
+}
+.tags a {
+	font-size: 0.8em;
+}
+.tags li {
+	display: inline;
+	margin: 0.3em;
+}
+ul.tags {
+	list-style:none;
+	padding-left: 0;
+}
+
+.content form input,
+.content form textarea {
+	background: transparent;
+	border: 1px solid #554865;
+}
+.content label {
+	width: 150px;
+	display: inline-block;
+}
+
+.blog-entry {
+	margin: 10px;
+}
+.blog-entry .attachment {
+}
+.blog-entry, .blog-entry .attachment, dl#comments,
+#media-tunes .tune {
+	padding: 10px;
+}
+dl#comments {
+	border: 1px solid #554865;
+}
+
+.clearboth { clear: both; }
+
+/* @begin gallery */
+.gallery-widget { width: 560px; }
+.gallery-widget a.browse {
+	width: 50px;
+	line-height: 100px;
+	margin: 5px;
+}
+.gallery-widget .img-wrapper {
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	margin: 5px;
+}
+.gallery .img-wrapper {
+	width: 150px;
+	height: 150px;
+	line-height: 150px;
+	margin: 5px;
+}
+.gallery .img-wrapper,
+.gallery-widget .img-wrapper,
+.gallery-widget .browse
+{
+	text-align: center;
+	
+}
+
+.gallery .img-wrapper,
+.gallery-widget .img-wrapper,
+.gallery-widget .left{
+	float: left;
+}
+.gallery-widget .right { float: right; }
+
+.gallery .img-wrapper img,
+.gallery-widget .img-wrapper img
+{
+	vertical-align: middle;
+}
+.focus {
+    position: fixed;
+	top: 50%;
+	left: 50%;
+    display: none;
+    z-index: 10;
+	cursor: pointer;
+}
+
+.gallery-widget .close {
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+	width: 100%; height: 100%;
+	background: #000;
+	opacity: 0.7;
+	z-index: 9;
+}
+
+.darken {
+    opacity: 0.3;
+}
+body.modal-open {
+    overflow: hidden;
+}
+/* @end gallery */
+/* @begin clearfix */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+/* @end clearfix */

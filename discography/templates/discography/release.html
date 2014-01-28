@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load djplayer_extras %}
+{% load discography_extras %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% djwidget_js_tune release.tune "release" %}
+{% endblock %}
+
+{% block main %}
+<h2>{{ release.title }}</h2>
+<div class="content" id="release">
+	{% show_release release %}
+</div>
+{% endblock %}

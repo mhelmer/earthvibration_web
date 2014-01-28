@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load comments %}
+{% load blog_extras %}
+{% load djplayer_extras %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% if tune %}
+		{% djwidget_js_tune tune blog_entry.pk %}
+	{% endif %}
+	<script src="{% static "gallery/js/jquery.widget.js" %}"></script>
+{% endblock %}
+
+{% block main %}
+	{% block sub-title %}{% endblock %}
+	{% show_blog_entry_details blog_entry %}
+{% endblock %}

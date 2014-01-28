@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load djplayer_extras %}
+
+{% block title %} jPlayer test {% endblock %}
+{% block link %}
+	{{ block.super }}
+	{% djwidget_link_css %}
+{% endblock %}
+{% block script %}
+	{{ block.super }}
+	{% djwidget_js_base %}
+	{% djwidget_script_tune tune %}
+{% endblock %}
+{% block main %}
+
+{% djplayer_widget tune %}
+{% endblock %}
