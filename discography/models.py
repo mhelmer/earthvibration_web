@@ -30,7 +30,7 @@ class Release(models.Model):
     slug = models.SlugField('slug', unique_for_year='release_date')
     release_date = models.DateTimeField('release date')
     catalog_number = models.CharField(max_length=20)
-    published = models.BooleanField()
+    published = models.BooleanField(default=False)
     tune = models.ForeignKey(Tune)
     label = models.ForeignKey(Label)
     rel_format = models.ForeignKey(RelFormat)

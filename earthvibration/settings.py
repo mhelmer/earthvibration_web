@@ -101,7 +101,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django.contrib.comments',
     # Some customizations
-    'comments',
+    #'comments',
 
     # External apps
     'taggit',
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'gallery',
 )
 
-COMMENTS_APP = 'comments'
+COMMENTS_APP = 'fluent_comments'
 
 LOGGING = {
     'version': 1,
@@ -145,6 +145,8 @@ LOGGING = {
     }
 }
 DATETIME_FORMAT = 'N j, Y, H:i'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 try:
     from settings_secret import *

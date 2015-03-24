@@ -13,7 +13,7 @@ class Event(models.Model):
     location = models.CharField(max_length=200)
     admission = models.CharField(max_length=20)
     ageLimit = models.IntegerField(null=True)
-    published = models.BooleanField()
+    published = models.BooleanField(default=False)
 
     flyer = models.ImageField(upload_to=get_image_path, null=True,
                               blank=True)
