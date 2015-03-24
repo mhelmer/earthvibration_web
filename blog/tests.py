@@ -74,8 +74,7 @@ class BlogDetailsView(AuthTestCase):
                              location="place", admission="0 SEK",
                              published=True)
         entry.attachment_object = event
-        entry.save
-        raise Exception('passing through')
+        entry.save()
 
         response = self.client.get(entry.get_absolute_url())
         self.assertContains(response, event.name)

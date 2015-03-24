@@ -25,7 +25,7 @@ class PollViewTests(TestCase):
         """
         response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "No polls available.")
+        self.assertContains(response, "No polls are available.")
         self.assertQuerysetEqual(response.context['latest_poll_list'], [])
 
     def test_index_view_with_a_past_poll(self):
@@ -33,7 +33,7 @@ class PollViewTests(TestCase):
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(
             response.context['latest_poll_list'],
-            ['<Poll: Post poll.>']
+            ['<Poll: Past poll.>']
         )
 
     def test_index_view_with_a_future_poll(self):
