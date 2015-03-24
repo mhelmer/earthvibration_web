@@ -9,6 +9,6 @@ before_script:
   - psql -c 'create database earthvibration;' -U postgres
   - cp earthvibration/settings_secret.py.example earthvibration/settings_secret.py
   - sed -i -e 's/getpass\.getuser()/\"postgres\"/g' earthvibration/settings_secret.py
-  - python manage.py migrate --noinput
+  #- python manage.py migrate --noinput
 script:
   - python manage.py test
