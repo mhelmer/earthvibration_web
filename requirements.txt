@@ -1,6 +1,6 @@
 Django==1.5.4
 ## needed for ImageField
-PIL==1.1.7
+Pillow
 ## spam filter
 akismet==0.2.0
 
