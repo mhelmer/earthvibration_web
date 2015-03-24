@@ -101,7 +101,6 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django.contrib.comments',
     # Some customizations
-    #'comments',
 
     # External apps
     'taggit',
@@ -110,6 +109,7 @@ INSTALLED_APPS = (
 
 
     # My apps:
+    'talawa_comments',
     'polls',
     'home',
     'events',
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'gallery',
 )
 
-COMMENTS_APP = 'fluent_comments'
+COMMENTS_APP = 'talawa_comments'
 
 LOGGING = {
     'version': 1,
