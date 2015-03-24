@@ -4,7 +4,7 @@ services:
 python:
   - 2.7
 install:
-  - pip install -r dev-requirements.txt
+  - pip install -r requirements.txt
 before_script:
   - psql -c 'create database earthvibration;' -U postgres
   - cp earthvibration/settings_secret.py.example earthvibration/settings_secret.py
