@@ -1,4 +1,4 @@
-from comments.forms import CommentForm
+from forms import CommentForm
 
 
 def get_form():
