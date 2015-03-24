@@ -146,4 +146,7 @@ LOGGING = {
 }
 DATETIME_FORMAT = 'N j, Y, H:i'
 
-from settings_secret import *
+try:
+    from settings_secret import *
+except ImportError, e:
+    pass
